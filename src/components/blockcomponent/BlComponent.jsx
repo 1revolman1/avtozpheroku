@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import styles from "./BlComponent.module.scss";
-import styled from "styled-components";
 import "./dropdown/index.scss";
-// import DropDown from "./dropdown/dropdown";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+import DropDown from "./dropdown/dropdown";
 
 export default class BlComponent extends Component {
   constructor(props) {
@@ -46,15 +39,36 @@ export default class BlComponent extends Component {
         </div>
         <div className={styles.productContainer_prducts}>
           <div className={styles.productContainer_prducts_setting}>
-            {/* <Select
-              isMulti
-              closeMenuOnSelect={false}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              value={selectedOption}
-              onChange={this.handleChange}
-              options={options}
-            /> */}
+            <DropDown
+              placeholder={"Text"}
+              options={[
+                { value: "ocean", label: "Ocean" },
+                { value: "blue", label: "Blue" },
+                { value: "purple", label: "Purple" },
+                { value: "red", label: "Red" },
+                { value: "orange", label: "Orange" },
+                { value: "yellow", label: "Yellow" },
+                { value: "green", label: "Green" },
+                { value: "forest", label: "Forest" },
+                { value: "slate", label: "Slate" },
+                { value: "silver", label: "Silver" },
+              ]}
+            />
+            <DropDown
+              placeholder={"Block"}
+              options={[
+                { value: "ocean", label: "Ocean" },
+                { value: "blue", label: "Blue" },
+                { value: "purple", label: "Purple" },
+                { value: "red", label: "Red" },
+                { value: "orange", label: "Orange" },
+                { value: "yellow", label: "Yellow" },
+                { value: "green", label: "Green" },
+                { value: "forest", label: "Forest" },
+                { value: "slate", label: "Slate" },
+                { value: "silver", label: "Silver" },
+              ]}
+            />
           </div>
           <div className={styles.productContainer_prducts_goods}></div>
         </div>
