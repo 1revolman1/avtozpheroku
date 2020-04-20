@@ -1,37 +1,64 @@
 import React, { Component } from "react";
+import styles from "./BlComponent.module.scss";
 import styled from "styled-components";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import reducer from "../../reducers/ProductsBlock/reducer.jsx";
+import "./dropdown/index.scss";
+// import DropDown from "./dropdown/dropdown";
 
-const store = createStore(reducer);
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
-export default class NowPage extends Component {
+export default class BlComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <Provider store={store}>
-        <div className="product-container">
-          <div className="header-component">
-            <h1>Масло моторное</h1>
-            <div className="block-settings">
-              <div className="info">
-                <p>Найдено 652 товара в категории</p>
-              </div>
-              <div className="settings">
-                <select id="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
-                <div className="view"></div>
-                <div className="view"></div>
-              </div>
+      <div className={styles.productContainer}>
+        <div className={styles.productContainer_header}>
+          <h1>Масло моторное</h1>
+          <div className={styles.productContainer_header_settings}>
+            <div className={styles.productContainer_header_settings_info}>
+              <p>Найдено 652 товара в категории</p>
+            </div>
+            <div className={styles.productContainer_header_settings_setting}>
+              <select
+                className={styles.productContainer_header_settings_setting_menu}
+              >
+                <option value="default">По умолчанию</option>
+                <option value="popular">Самые популярные</option>
+                <option value="priceSm">Сортировать по цене(убывание)</option>
+                <option value="priceBg">
+                  Сортировать по цене(возрастание)
+                </option>
+              </select>
+              <div
+                className={styles.productContainer_header_settings_setting_view}
+              ></div>
+              <div
+                className={styles.productContainer_header_settings_setting_view}
+              ></div>
             </div>
           </div>
-          <div className="prducts-component"></div>
         </div>
-      </Provider>
+        <div className={styles.productContainer_prducts}>
+          <div className={styles.productContainer_prducts_setting}>
+            {/* <Select
+              isMulti
+              closeMenuOnSelect={false}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              value={selectedOption}
+              onChange={this.handleChange}
+              options={options}
+            /> */}
+          </div>
+          <div className={styles.productContainer_prducts_goods}></div>
+        </div>
+      </div>
     );
   }
 }

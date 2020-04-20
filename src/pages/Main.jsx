@@ -13,7 +13,7 @@ export default function Main() {
           { title: "Масло моторное", to: "/maslo-motor" },
         ]}
       />
-      <BlComponent></BlComponent>
+      <BlComponent />
       <div>Home</div>
     </React.Fragment>
   );

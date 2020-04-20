@@ -89,7 +89,12 @@ export default class BlockWithMenu extends Component {
   render() {
     return (
       <WrapperBlockDiv wg="80%">
-        <Dropdown wg="40%" title="Каталог товаров" list={this.state.location} />
+        <Dropdown
+          abs
+          wg="40%"
+          title="Каталог товаров"
+          list={this.state.location}
+        />
         <SearchBar wg="50%" />
         <StyledButtonsDiv wg="25%">
           <StyledButtonDiv>
