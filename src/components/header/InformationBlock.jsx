@@ -142,7 +142,7 @@ export default class InformationBlock extends Component {
                   </li>
                 ))}
               </StyleInformationUl>
-              <a>перезвоните мне</a>
+              <a href="tel:+1234567890">перезвоните мне</a>
             </StyleInfromationBlock>
           </BlockAtMainHeader>
           <BlockAtMainHeader fl="1" jc="flex-end" pd="0 0 0 25px">

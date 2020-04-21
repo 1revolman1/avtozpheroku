@@ -106,7 +106,7 @@ export default class extends Component {
 const MultiValue = (props) => {
   return (
     <components.MultiValue {...props}>
-      <span>{props.data.label}</span>
+      <span>{props.data.value}</span>
     </components.MultiValue>
   );
 };

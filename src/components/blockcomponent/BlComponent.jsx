@@ -2,12 +2,31 @@ import React, { Component } from "react";
 import styles from "./BlComponent.module.scss";
 import "./dropdown/index.scss";
 import DropDown from "./dropdown/dropdown";
+import DropDownData from "../../avto1.json";
 
 export default class BlComponent extends Component {
   constructor(props) {
     super(props);
   }
-
+  renderDropDown = (DropDownData) => {
+    // Convert data to affrodable format
+    DropDownData.forEach((e, i) => {
+      let key = Object.keys(e)[0];
+      let newData = [];
+      let length = DropDownData[i][key].length;
+      for (let m = 0; m < length; m += 1) {
+        newData.push({ value: DropDownData[i][key][m] });
+      }
+      DropDownData[i][key] = newData;
+    });
+    const listItems = DropDownData.map((data) => (
+      <DropDown
+        placeholder={Object.keys(data)[0]}
+        options={data[Object.keys(data)[0]]}
+      />
+    ));
+    return listItems;
+  };
   render() {
     return (
       <div className={styles.productContainer}>
@@ -39,36 +58,37 @@ export default class BlComponent extends Component {
         </div>
         <div className={styles.productContainer_prducts}>
           <div className={styles.productContainer_prducts_setting}>
-            <DropDown
+            {this.renderDropDown(DropDownData)}
+            {/* <DropDown
               placeholder={"Text"}
               options={[
-                { value: "ocean", label: "Ocean" },
-                { value: "blue", label: "Blue" },
-                { value: "purple", label: "Purple" },
-                { value: "red", label: "Red" },
-                { value: "orange", label: "Orange" },
-                { value: "yellow", label: "Yellow" },
-                { value: "green", label: "Green" },
-                { value: "forest", label: "Forest" },
-                { value: "slate", label: "Slate" },
-                { value: "silver", label: "Silver" },
+                { value: "ocean" },
+                { value: "blue" },
+                { value: "purple" },
+                { value: "red" },
+                { value: "orange" },
+                { value: "yellow" },
+                { value: "green" },
+                { value: "forest" },
+                { value: "slate" },
+                { value: "silver" },
               ]}
             />
             <DropDown
               placeholder={"Block"}
               options={[
-                { value: "ocean", label: "Ocean" },
-                { value: "blue", label: "Blue" },
-                { value: "purple", label: "Purple" },
-                { value: "red", label: "Red" },
-                { value: "orange", label: "Orange" },
-                { value: "yellow", label: "Yellow" },
-                { value: "green", label: "Green" },
-                { value: "forest", label: "Forest" },
-                { value: "slate", label: "Slate" },
-                { value: "silver", label: "Silver" },
+                { value: "ocean" },
+                { value: "blue" },
+                { value: "purple" },
+                { value: "red" },
+                { value: "orange" },
+                { value: "yellow" },
+                { value: "green" },
+                { value: "forest" },
+                { value: "slate" },
+                { value: "silver" },
               ]}
-            />
+            /> */}
           </div>
           <div className={styles.productContainer_prducts_goods}></div>
         </div>

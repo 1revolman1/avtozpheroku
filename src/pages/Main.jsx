@@ -14,7 +14,7 @@ export default function Main() {
         ]}
       />
       <BlComponent />
-      <div>Home</div>
+      {/* <div>Home</div> */}
     </React.Fragment>
   );
 }
