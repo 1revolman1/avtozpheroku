@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Select, { components } from "react-select";
 import createClass from "create-react-class";
-import styled from "styled-components";
 import "./index.scss";
 
 const colourStyles = {
@@ -85,19 +84,21 @@ const Option = createClass({
 
 export default class extends Component {
   render() {
-    const { placeholder, options } = this.props;
+    const { placeholder, options, onChange, selectedOption } = this.props;
     return (
       <Select
         styles={colourStyles}
         closeMenuOnSelect={false}
         isMulti
+        // value={selectedOption}
         components={{ Option, MultiValue, Menu }}
         options={options}
         hideSelectedOptions={false}
         placeholder={placeholder}
         // menuIsOpen
         backspaceRemovesValue={false}
-        onChange={(e) => console.log(e)}
+        onChange={onChange}
+        // onChange={(e) => console.log(e)}
       />
     );
   }

@@ -7,26 +7,55 @@ import DropDownData from "../../avto1.json";
 export default class BlComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = { selectedOption: null };
   }
+  handleChange = (selectedOption) => {
+    // this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  };
   renderDropDown = (DropDownData) => {
+    const { selectedOption } = this.state;
     // Convert data to affrodable format
-    DropDownData.forEach((e, i) => {
-      let key = Object.keys(e)[0];
+    // let buffer = [];
+    // DropDownData.forEach((e, i) => {
+    //   let key = Object.keys(e)[0];
+    //   let newData = [];
+    //   let length = DropDownData[i][key].length;
+    //   for (let m = 0; m < length; m += 1) {
+    //     newData.push({ value: DropDownData[i][key][m] });
+    //   }
+    //   DropDownData[i][key] = newData;
+    // });
+    // let buffer = DropDownData.map((e, i) => {
+    //   let key = Object.keys(e)[0];
+    //   let newData = [];
+    //   let length = DropDownData[i][key].length;
+    //   for (let m = 0; m < length; m += 1) {
+    //     newData.push({ value: DropDownData[i][key][m] });
+    //   }
+    //   return newData;
+    // });
+    // console.log(buffer);
+    console.log(DropDownData);
+    const listItems = DropDownData.map((data, index) => {
+      let key = Object.keys(data)[0];
       let newData = [];
-      let length = DropDownData[i][key].length;
+      let length = DropDownData[index][key].length;
       for (let m = 0; m < length; m += 1) {
-        newData.push({ value: DropDownData[i][key][m] });
+        newData.push({ value: DropDownData[index][key][m] });
       }
-      DropDownData[i][key] = newData;
+      return (
+        <DropDown
+          key={index}
+          placeholder={Object.keys(data)[0]}
+          options={newData}
+          onChange={this.handleChange}
+        />
+      );
     });
-    const listItems = DropDownData.map((data) => (
-      <DropDown
-        placeholder={Object.keys(data)[0]}
-        options={data[Object.keys(data)[0]]}
-      />
-    ));
     return listItems;
   };
+
   render() {
     return (
       <div className={styles.productContainer}>
@@ -59,36 +88,6 @@ export default class BlComponent extends Component {
         <div className={styles.productContainer_prducts}>
           <div className={styles.productContainer_prducts_setting}>
             {this.renderDropDown(DropDownData)}
-            {/* <DropDown
-              placeholder={"Text"}
-              options={[
-                { value: "ocean" },
-                { value: "blue" },
-                { value: "purple" },
-                { value: "red" },
-                { value: "orange" },
-                { value: "yellow" },
-                { value: "green" },
-                { value: "forest" },
-                { value: "slate" },
-                { value: "silver" },
-              ]}
-            />
-            <DropDown
-              placeholder={"Block"}
-              options={[
-                { value: "ocean" },
-                { value: "blue" },
-                { value: "purple" },
-                { value: "red" },
-                { value: "orange" },
-                { value: "yellow" },
-                { value: "green" },
-                { value: "forest" },
-                { value: "slate" },
-                { value: "silver" },
-              ]}
-            /> */}
           </div>
           <div className={styles.productContainer_prducts_goods}></div>
         </div>
