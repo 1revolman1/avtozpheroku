@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Dropdown from "./dropdown/Dropdown";
 import SearchBar from "./searcher/SearchBar";
 import star from "./star.svg";
-import cart from "./supermarket.svg";
+import cart from "../../assets/supermarket.svg";
 
 const WrapperBlockDiv = styled.div`
   display: flex;
@@ -19,7 +19,11 @@ const StyledButtonsDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: ${(props) => (props.wg ? props.wg : "auto")};
+  @media screen and (max-width: 1250px) {
+    justify-content: flex-start;
+  }
   @media screen and (max-width: 768px) {
     width: 100%;
     max-width: initial;
@@ -95,7 +99,7 @@ export default class BlockWithMenu extends Component {
           title="Каталог товаров"
           list={this.state.location}
         />
-        <SearchBar wg="50%" />
+        <SearchBar wg="52%" />
         <StyledButtonsDiv wg="25%">
           <StyledButtonDiv>
             <img src={star} />

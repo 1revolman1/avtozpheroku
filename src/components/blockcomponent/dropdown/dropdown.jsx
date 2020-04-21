@@ -25,6 +25,9 @@ const colourStyles = {
       maxWidth: "initial",
       width: "100%",
     },
+    ":first-child": {
+      margin: "0 0 10px 0",
+    },
   }),
   control: (provider, state) => ({
     ...provider,
@@ -40,8 +43,8 @@ const colourStyles = {
   }),
   menuList: (base, state) => ({
     ...base,
-    maxHeight: "initial",
-    overflow: "auto",
+    // maxHeight: "initial",
+    // overflow: "auto",
   }),
   placeholder: (base, state) => ({
     ...base,
@@ -85,19 +88,22 @@ const Option = createClass({
 export default class extends Component {
   render() {
     const { placeholder, options, onChange, selectedOption } = this.props;
+    function newOnChange(value) {
+      onChange(value, placeholder);
+    }
     return (
       <Select
         styles={colourStyles}
         closeMenuOnSelect={false}
+        value={selectedOption}
         isMulti
-        // value={selectedOption}
         components={{ Option, MultiValue, Menu }}
         options={options}
         hideSelectedOptions={false}
         placeholder={placeholder}
         // menuIsOpen
         backspaceRemovesValue={false}
-        onChange={onChange}
+        onChange={newOnChange}
         // onChange={(e) => console.log(e)}
       />
     );

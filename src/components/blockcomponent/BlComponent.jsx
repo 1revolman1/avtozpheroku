@@ -3,40 +3,29 @@ import styles from "./BlComponent.module.scss";
 import "./dropdown/index.scss";
 import DropDown from "./dropdown/dropdown";
 import DropDownData from "../../avto1.json";
-
+import Card from "../productcard/Card";
 export default class BlComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedOption: null };
+    this.state = {
+      selectedOption: {
+        Бренд: [],
+        Вязкость: [],
+        Тип: [],
+        Спецификация: [],
+        Допуск: [],
+      },
+    };
   }
-  handleChange = (selectedOption) => {
-    // this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  handleChange = (selectedOption, withcSelected) => {
+    this.setState((prevState) => ({
+      selectedOption: {
+        ...prevState.selectedOption,
+        [withcSelected]: selectedOption,
+      },
+    }));
   };
   renderDropDown = (DropDownData) => {
-    const { selectedOption } = this.state;
-    // Convert data to affrodable format
-    // let buffer = [];
-    // DropDownData.forEach((e, i) => {
-    //   let key = Object.keys(e)[0];
-    //   let newData = [];
-    //   let length = DropDownData[i][key].length;
-    //   for (let m = 0; m < length; m += 1) {
-    //     newData.push({ value: DropDownData[i][key][m] });
-    //   }
-    //   DropDownData[i][key] = newData;
-    // });
-    // let buffer = DropDownData.map((e, i) => {
-    //   let key = Object.keys(e)[0];
-    //   let newData = [];
-    //   let length = DropDownData[i][key].length;
-    //   for (let m = 0; m < length; m += 1) {
-    //     newData.push({ value: DropDownData[i][key][m] });
-    //   }
-    //   return newData;
-    // });
-    // console.log(buffer);
-    console.log(DropDownData);
     const listItems = DropDownData.map((data, index) => {
       let key = Object.keys(data)[0];
       let newData = [];
@@ -89,7 +78,9 @@ export default class BlComponent extends Component {
           <div className={styles.productContainer_prducts_setting}>
             {this.renderDropDown(DropDownData)}
           </div>
-          <div className={styles.productContainer_prducts_goods}></div>
+          <div className={styles.productContainer_prducts_goods}>
+            <Card /> <Card /> <Card /> <Card />
+          </div>
         </div>
       </div>
     );

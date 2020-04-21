@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
     "@testing-library/user-event": "^10.0.2",
+    "autoprefixer": "^9.7.6",
     "chroma-js": "^2.1.0",
     "create-react-class": "^15.6.3",
     "node-sass": "^4.13.1",
@@ -32,7 +33,11 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "since 2010",
+      "not op_mini all",
+      "> 1%",
+      "maintained node versions",
+      "not dead"
     ],
     "development": [
       "last 1 chrome version",
