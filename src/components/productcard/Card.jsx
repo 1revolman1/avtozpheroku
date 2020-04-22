@@ -22,22 +22,20 @@ export default class Card extends Component {
   }
   render() {
     const { hotprice, buyerslike } = this.state;
+    const { view, proizvod, text, code, price, img } = this.props;
     return (
-      <div className={styles.productCard}>
+      <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
-          <img
-            alt="oil"
-            src="https://shop.autoopora.com/fotos/cache/410799978887Z_1-238x238.JPG"
-          />
+          <img alt="oil" src={img} />
         </div>
         <div className={styles.productCard_textContent}>
-          <h4>Castrol</h4>
-          <h2>Масло GM Motor Oil 1л 10W40 (полусинтетика)</h2>
-          <p>Код товара: 410799978887Z</p>
-          <p>Кат. номер: GH0W20FS1</p>
+          <h4>{proizvod}</h4>
+          <h2>{text}</h2>
+          <p>{code[0]}</p>
+          <p>{code[1]}</p>
         </div>
         <div className={styles.productCard_priceList}>
-          <p>511.80 грн.</p>
+          <p>{price}</p>
           <div className={styles.productCard_priceList_buttons}>
             <Counter />
             <div className={styles.productCard_priceList_buttons_toCart}>

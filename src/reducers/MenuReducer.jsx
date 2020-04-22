@@ -7,13 +7,7 @@ import {
 const initialState = {
   menues: [],
   isFetching: false,
-  selectedOption: {
-    Бренд: [],
-    Вязкость: [],
-    Тип: [],
-    Спецификация: [],
-    Допуск: [],
-  },
+  selectedOption: null,
 };
 export function menueReducer(state = initialState, action) {
   switch (action.type) {
@@ -28,16 +22,18 @@ export function menueReducer(state = initialState, action) {
     case GET_MENUES_ERROR:
       return {
         ...state,
-        menues: { id: 1488, title: "Извините, нету интернета" },
+        menues: [{ Ничего: ["Пусто"] }],
         isFetching: false,
       };
     case SET_MENUES_SETTINGS:
       return {
         ...state,
         selectedOption: {
+          ...state.selectedOption,
           [action.payload[1]]: action.payload[0],
         },
       };
+
     default:
       return state;
   }

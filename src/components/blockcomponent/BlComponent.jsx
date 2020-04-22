@@ -1,44 +1,39 @@
 import React, { Component } from "react";
 import styles from "./BlComponent.module.scss";
+import styled from "styled-components";
 import "./dropdown/index.scss";
-// import DropDown from "./dropdown/dropdown";
-// import DropDownData from "../../avto1.json";
 import { connect } from "react-redux";
 import { changeToLine, changeToBlock } from "../../actions/ViewCardAction";
 import ProductsContainer from "../../containers/BlockProducts";
 import MenueContainer from "../../containers/BlockMenu";
 
+const StyledButtonViewBlock = styled.div`
+  background: ${(props) =>
+    props.view === "block" ? "rgba(88, 169, 75, 0.3)" : "#d9d9d9"};
+  span {
+    border: ${(props) =>
+      props.view === "block" ? "solid 2px #58a94b" : "solid 2px #616161"};
+  }
+`;
+const StyledButtonViewLine = styled.div`
+  background: ${(props) =>
+    props.view === "line" ? "rgba(88, 169, 75, 0.3)" : "#d9d9d9"};
+  span,
+  span::before,
+  span::after {
+    background: ${(props) => (props.view === "line" ? " #58a94b" : "#616161")};
+  }
+`;
 class BlComponent extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     selectedOption: {
-  //       Бренд: [],
-  //       Вязкость: [],
-  //       Тип: [],
-  //       Спецификация: [],
-  //       Допуск: [],
-  //     },
-  //   };
-  // }
-  // handleChange = (selectedOption, withcSelected) => {
-  //   this.setState((prevState) => ({
-  //     selectedOption: {
-  //       ...prevState.selectedOption,
-  //       [withcSelected]: selectedOption,
-  //     },
-  //   }));
-  // };
-
   render() {
-    const { view, changeToLine, changeToBlock } = this.props;
+    const { view, goods } = this.props;
     return (
       <div className={styles.productContainer}>
         <div className={styles.productContainer_header}>
-          <h1>Масло моторное {view.view} </h1>
+          <h1>Масло моторное </h1>
           <div className={styles.productContainer_header_settings}>
             <div className={styles.productContainer_header_settings_info}>
-              <p>Найдено 652 товара в категории</p>
+              <p>Найдено {goods.products.length} товара в категории</p>
             </div>
             <div className={styles.productContainer_header_settings_setting}>
               <select
@@ -51,36 +46,35 @@ class BlComponent extends Component {
                   Сортировать по цене(возрастание)
                 </option>
               </select>
-              <div
+              <StyledButtonViewBlock
                 className={
                   styles.productContainer_header_settings_setting_view_box
                 }
+                view={view.view}
                 onClick={() => {
-                  console.log("box");
-                  this.props.changeToLine();
-                }}
-              >
-                <span></span> <span></span> <span></span> <span></span>
-              </div>
-              <div
-                className={
-                  styles.productContainer_header_settings_setting_view_burg
-                }
-                onClick={() => {
-                  console.log("line");
+                  console.log("block");
                   this.props.changeToBlock();
                 }}
               >
+                <span></span> <span></span> <span></span> <span></span>
+              </StyledButtonViewBlock>
+              <StyledButtonViewLine
+                className={
+                  styles.productContainer_header_settings_setting_view_burg
+                }
+                view={view.view}
+                onClick={() => {
+                  console.log("line");
+                  this.props.changeToLine();
+                }}
+              >
                 <span></span>
-              </div>
+              </StyledButtonViewLine>
             </div>
           </div>
         </div>
         <div className={styles.productContainer_prducts}>
           <MenueContainer />
-          {/* <div className={styles.productContainer_prducts_setting}>
-            {this.renderDropDown(DropDownData)}
-          </div> */}
           <ProductsContainer />
         </div>
       </div>
@@ -90,6 +84,7 @@ class BlComponent extends Component {
 const mapStateToProps = (store) => {
   return {
     view: store.view,
+    goods: store.goods,
   };
 };
 const mapDispatchToProps = (dispatch) => {

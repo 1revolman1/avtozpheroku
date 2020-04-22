@@ -22,7 +22,6 @@ export default class Counter extends Component {
               viewBox="0 0 20 20"
               aria-hidden="true"
               focusable="false"
-              class="css-6q0nyr-Svg"
             >
               <path
                 fill="grey"
@@ -43,7 +42,6 @@ export default class Counter extends Component {
               viewBox="0 0 20 20"
               aria-hidden="true"
               focusable="false"
-              class="css-6q0nyr-Svg"
             >
               <path
                 fill="grey"

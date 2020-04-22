@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import s from "./style.scss";
+import "./style.scss";
 const StuledUl = styled.ul`
   display: flex;
   & > li {
@@ -33,7 +33,7 @@ const StuledUl = styled.ul`
 export default class NowPage extends Component {
   render() {
     const { pageadress } = this.props;
-    console.log(pageadress);
+    // console.log(pageadress);
     return (
       <nav className="nav-container">
         <div className="nav-container__wrapper">

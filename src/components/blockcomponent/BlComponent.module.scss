@@ -119,14 +119,14 @@
               width: 100%;
               top: 8px;
             }
-            &:hover {
-              background-color: rgba(88, 169, 75, 0.3);
-              span,
-              span::before,
-              span::after {
-                background-color: #58a94b;
-              }
-            }
+            // &:hover {
+            //   background-color: rgba(88, 169, 75, 0.3);
+            //   span,
+            //   span::before,
+            //   span::after {
+            //     background-color: #58a94b;
+            //   }
+            // }
             @media screen and (max-width: 480px) {
               margin-top: 10px;
               margin-bottom: 10px;

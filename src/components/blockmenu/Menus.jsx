@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import styles from "./Menues.module.scss";
 import DropDown from "../blockcomponent/dropdown/dropdown";
-// import Card from "../productcard/Card";
 
 export default class Menus extends Component {
-  componentDidMount = (e) => {
+  componentDidMount = () => {
     this.props.getMenues();
   };
   handleChange = (selectedOption, withcSelected) => {
-    // this.setState((prevState) => ({
-    //   selectedOption: {
-    //     ...prevState.selectedOption,
-    //     [withcSelected]: selectedOption,
-    //   },
-    // }));
-    console.log(selectedOption, withcSelected);
     this.props.setFilter(selectedOption, withcSelected);
   };
   renderDropDown = (DropDownData) => {
@@ -38,6 +30,7 @@ export default class Menus extends Component {
   };
   render() {
     const { menues, isFetching } = this.props;
+
     return (
       <div className={styles.menueSetting}>
         {!isFetching ? (
@@ -45,7 +38,6 @@ export default class Menus extends Component {
         ) : (
           <div>Загружаю меню...</div>
         )}
-        {/* {this.renderDropDown()} */}
       </div>
     );
   }

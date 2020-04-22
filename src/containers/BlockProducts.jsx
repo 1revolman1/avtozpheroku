@@ -5,9 +5,10 @@ import { getGoods } from "../actions/BlockComponentActions";
 
 class ProductsContainer extends React.Component {
   render() {
-    const { goods, getGoods } = this.props;
+    const { goods, getGoods, view } = this.props;
     return (
       <Products
+        view={view.view}
         products={goods.products}
         isFetching={goods.isFetching}
         getGoods={getGoods}
@@ -18,6 +19,7 @@ class ProductsContainer extends React.Component {
 const mapStateToProps = (store) => {
   return {
     goods: store.goods,
+    view: store.view,
   };
 };
 const mapDispatchToProps = (dispatch) => {

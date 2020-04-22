@@ -24,7 +24,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMenues: () => dispatch(getMenues()),
-    setFilter: () => dispatch(setFilter()),
+    setFilter: (data, name) => dispatch(setFilter(data, name)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MenueContainer);

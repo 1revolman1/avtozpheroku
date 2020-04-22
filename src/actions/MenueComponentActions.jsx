@@ -7,7 +7,7 @@ export function getMenues(t) {
     dispatch({
       type: GET_MENUES_REQUEST,
     });
-    fetch("http://localhost:8080/api/menu")
+    fetch("https://avtooporatest.herokuapp.com/api/menu")
       .then((response) => response.json())
       .then((json) =>
         dispatch({
@@ -23,11 +23,12 @@ export function getMenues(t) {
       });
   };
 }
-export function setFilter(selectedOption, withcSelected) {
+export function setFilter(selectedOption, withToSelect) {
   return (dispatch) => {
     dispatch({
       type: SET_MENUES_SETTINGS,
-      payload: [selectedOption, withcSelected],
+      payload: [selectedOption, withToSelect],
     });
   };
 }
+//  http://localhost:8080/api/menu

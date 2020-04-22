@@ -25,7 +25,7 @@ const colourStyles = {
       maxWidth: "initial",
       width: "100%",
     },
-    ":first-child": {
+    ":first-of-type": {
       margin: "0 0 10px 0",
     },
   }),
@@ -77,7 +77,7 @@ export default class extends Component {
   render() {
     const { placeholder, options, onChange, selectedOption } = this.props;
     function newOnChange(value) {
-      this.onChange(value, placeholder);
+      onChange(value, placeholder);
     }
     return (
       <Select

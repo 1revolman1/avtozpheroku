@@ -36,7 +36,7 @@ export default class DropDown extends Component {
   }
 
   render() {
-    const { list, wg, title, abs } = this.props;
+    const { list, wg, abs } = this.props;
     const { listOpen, headerTitle } = this.state;
     return (
       <DropDownDiv className={styles.dropdownDiv} wg={wg}>
