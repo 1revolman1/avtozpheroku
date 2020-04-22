@@ -203,6 +203,7 @@
       flex: 1;
       @media screen and (max-width: 480px) {
         flex: initial;
+        width: 100%;
       }
     }
     .productCard_textContent {
@@ -210,6 +211,20 @@
     }
     .productCard_priceList {
       flex: 1;
+    }
+    .productCard_categories {
+      width: 25%;
+      // top: initial;
+      // bottom: 8px;
+      // left: initial;
+      // right: 16px;
+      @media screen and (max-width: 480px) {
+        width: 50%;
+        // top: 8px;
+        // bottom: initial;
+        // left: 16px;
+        // right: initial;
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import styles from "./Products.module.scss";
 import Card from "../productcard/Card";
+import { Pagination } from "@material-ui/lab";
 
 const ProductsDiv = styled.div`
   flex-direction: ${(props) => (props.view === "line" ? "column" : "row")};
@@ -11,6 +12,15 @@ const LoadingDiv = styled.div`
 `;
 
 export default class Products extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: 1,
+    };
+  }
+  handleChange = (event, value) => {
+    this.setState({ pages: value });
+  };
   componentDidMount = (e) => {
     this.props.getGoods();
   };
@@ -34,6 +44,11 @@ export default class Products extends Component {
     const { products, isFetching, view } = this.props;
     return (
       <ProductsDiv view={view} className={styles.goodsContainer}>
+        <Pagination
+          count={10}
+          page={this.state.pages}
+          onChange={this.handleChange}
+        />
         {!isFetching ? (
           this.renderCard(products)
         ) : (
