@@ -4,6 +4,7 @@ import "./dropdown/index.scss";
 import DropDown from "./dropdown/dropdown";
 import DropDownData from "../../avto1.json";
 import Card from "../productcard/Card";
+
 export default class BlComponent extends Component {
   constructor(props) {
     super(props);

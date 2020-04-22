@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
-import { blockComponentReducer } from "./BlockComponent";
+import { pageReducer } from "./BlockComponent";
+import { viewReducer } from "./ViewReducer";
 export const rootReducer = combineReducers({
-  goods: blockComponentReducer,
+  goods: pageReducer,
+  view: viewReducer,
 });

@@ -85,6 +85,10 @@
                 border: solid 2px #58a94b;
               }
             }
+            @media screen and (max-width: 480px) {
+              margin-top: 10px;
+              margin-bottom: 10px;
+            }
           }
           &_burg {
             display: flex;
@@ -122,6 +126,10 @@
               span::after {
                 background-color: #58a94b;
               }
+            }
+            @media screen and (max-width: 480px) {
+              margin-top: 10px;
+              margin-bottom: 10px;
             }
           }
         }

@@ -33,7 +33,10 @@
 //       return state;
 //   }
 // }
-import { GET_GOODS_REQUEST, GET_GOODS_SUCCESS } from "../actions/PageActions";
+import {
+  GET_GOODS_REQUEST,
+  GET_GOODS_SUCCESS,
+} from "../actions/BlockComponentActions";
 const initialState = {
   products: [],
   isFetching: false, // изначально статус загрузки - ложь
