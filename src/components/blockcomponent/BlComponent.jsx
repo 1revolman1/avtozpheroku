@@ -66,11 +66,19 @@ export default class BlComponent extends Component {
                 </option>
               </select>
               <div
-                className={styles.productContainer_header_settings_setting_view}
-              ></div>
+                className={
+                  styles.productContainer_header_settings_setting_view_box
+                }
+              >
+                <span></span> <span></span> <span></span> <span></span>
+              </div>
               <div
-                className={styles.productContainer_header_settings_setting_view}
-              ></div>
+                className={
+                  styles.productContainer_header_settings_setting_view_burg
+                }
+              >
+                <span></span>
+              </div>
             </div>
           </div>
         </div>

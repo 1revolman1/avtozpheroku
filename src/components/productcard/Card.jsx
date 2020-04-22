@@ -1,9 +1,27 @@
 import React, { Component } from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 import styles from "./Card.module.scss";
 import cart from "../../assets/supermarket.svg";
+import star from "../../assets/star.svg";
+import Counter from "./counter/Counter";
+
+const BlockFavourite = styled.div`
+  background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
+`;
+
 export default class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 1,
+      inCart: false,
+      inFavourite: false,
+      buyerslike: false,
+      hotprice: false,
+    };
+  }
   render() {
+    const { hotprice, buyerslike } = this.state;
     return (
       <div className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
@@ -21,48 +39,33 @@ export default class Card extends Component {
         <div className={styles.productCard_priceList}>
           <p>511.80 грн.</p>
           <div className={styles.productCard_priceList_buttons}>
-            <div className={styles.productCard_priceList_buttons_counter}>
-              <span>1</span>
-              <div
-                className={styles.productCard_priceList_buttons_counter_button}
-              >
-                <button pos="dec">
-                  <svg
-                    height="20"
-                    width="20"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    focusable="false"
-                    class="css-6q0nyr-Svg"
-                  >
-                    <path
-                      fill="grey"
-                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
-                    ></path>
-                  </svg>
-                </button>
-                <button pos="inc">
-                  <svg
-                    height="20"
-                    width="20"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                    focusable="false"
-                    class="css-6q0nyr-Svg"
-                  >
-                    <path
-                      fill="grey"
-                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
+            <Counter />
             <div className={styles.productCard_priceList_buttons_toCart}>
               <p>В корзину</p>
               <img alt="cart" src={cart} />
             </div>
           </div>
+        </div>
+        <BlockFavourite
+          onClick={() =>
+            this.setState({ inFavourite: !this.state.inFavourite })
+          }
+          active={this.state.inFavourite}
+          className={styles.productCard_favourite}
+        >
+          <img src={star} alt="star" />
+        </BlockFavourite>
+        <div className={styles.productCard_categories}>
+          {buyerslike ? (
+            <div className={styles.productCard_categories_percent}>
+              <span>–12%</span>
+            </div>
+          ) : null}
+          {hotprice ? (
+            <div className={styles.productCard_categories_hot}>
+              <span>Хит продаж</span>
+            </div>
+          ) : null}
         </div>
       </div>
     );
