@@ -33,7 +33,7 @@ class BlComponent extends Component {
           <h1>Масло моторное </h1>
           <div className={styles.productContainer_header_settings}>
             <div className={styles.productContainer_header_settings_info}>
-              <p>Найдено {goods.products.length} товара в категории</p>
+              <p>Найдено {goods.ammount} товара в категории</p>
             </div>
             <div className={styles.productContainer_header_settings_setting}>
               <select

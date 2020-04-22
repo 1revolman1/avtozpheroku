@@ -24,36 +24,41 @@ export default class Products extends Component {
   componentDidMount = (e) => {
     this.props.getGoods();
   };
-  renderCard = (products) => {
-    const listGoods = products.map((data, index) => {
-      return (
-        <Card
-          view={this.props.view}
-          key={index}
-          proizvod={data.proizvod}
-          text={data.text}
-          code={data.code}
-          price={data.price}
-          img={data.img}
-        />
-      );
-    });
-    return listGoods;
+  renderCard = (products, index) => {
+    //Предотвратить вызов когда нету данных
+    if (products[0] !== undefined) {
+      const listGoods = products[index].map((data, index) => {
+        return (
+          <Card
+            view={this.props.view}
+            key={index}
+            proizvod={data.proizvod}
+            text={data.text}
+            code={data.code}
+            price={data.price}
+            img={data.img}
+          />
+        );
+      });
+      return listGoods;
+    } else {
+      return <div>Loading...</div>;
+    }
   };
   render() {
     const { products, isFetching, view } = this.props;
     return (
       <ProductsDiv view={view} className={styles.goodsContainer}>
-        <Pagination
-          count={10}
-          page={this.state.pages}
-          onChange={this.handleChange}
-        />
         {!isFetching ? (
-          this.renderCard(products)
+          this.renderCard(products, this.state.pages - 1)
         ) : (
           <LoadingDiv>Загружаю товар...</LoadingDiv>
         )}
+        <Pagination
+          count={products.length}
+          page={this.state.pages}
+          onChange={this.handleChange}
+        />
       </ProductsDiv>
     );
   }
