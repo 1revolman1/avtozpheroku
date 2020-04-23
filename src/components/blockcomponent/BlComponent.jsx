@@ -13,6 +13,33 @@ import Scroll from "react-scroll";
 const StyledPagination = styled(Pagination)`
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
+  .MuiPagination-ul {
+    margin: 0;
+    & li {
+      &:first-of-type,
+      &:last-of-type {
+        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2);
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: solid 1px #f9f9f9;
+      }
+      & .Mui-selected {
+        background-color: #58a94b;
+        color: white;
+      }
+      & button {
+        font-size: 18px;
+        font-weight: 700;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #000000;
+      }
+    }
+  }
 `;
 const StyledButtonViewBlock = styled.div`
   background: ${(props) =>
@@ -89,6 +116,7 @@ class BlComponent extends Component {
           <ProductsContainer />
         </div>
         <StyledPagination
+          size="large"
           count={goods.products.length}
           page={goods.pageToShow}
           onChange={this.handleChange}
