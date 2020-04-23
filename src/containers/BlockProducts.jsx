@@ -1,18 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import Products from "../components/blockproducts/Products";
-import { getGoods } from "../actions/BlockComponentActions";
+import { getGoods, changeProducts } from "../actions/BlockComponentActions";
 
 class ProductsContainer extends React.Component {
   render() {
-    const { goods, getGoods, view } = this.props;
+    const { goods, getGoods, changeProducts, view } = this.props;
     return (
       <Products
         view={view.view}
         products={goods.products}
         isFetching={goods.isFetching}
         pageToShow={goods.pageToShow}
+        goodsStore={goods.goodsStore}
         getGoods={getGoods}
+        changeProducts={changeProducts}
       />
     );
   }
@@ -26,6 +28,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getGoods: () => dispatch(getGoods()),
+    changeProducts: (products) => dispatch(changeProducts(products)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
