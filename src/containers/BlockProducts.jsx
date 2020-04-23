@@ -12,9 +12,9 @@ class ProductsContainer extends React.Component {
         products={goods.products}
         isFetching={goods.isFetching}
         pageToShow={goods.pageToShow}
-        goodsStore={goods.goodsStore}
+        // goodsStore={goods.goodsStore}
         getGoods={getGoods}
-        changeProducts={changeProducts}
+        // changeProducts={changeProducts}
       />
     );
   }

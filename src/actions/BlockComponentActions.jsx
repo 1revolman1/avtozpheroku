@@ -9,39 +9,45 @@ export function getGoods() {
     dispatch({
       type: GET_GOODS_REQUEST,
     });
-    fetch("https://avtooporatest.herokuapp.com/api/goods")
+    fetch("http://localhost:8080/api/goods")
       .then((response) => response.json())
-      .then((json) => {
-        dispatch({
-          type: SET_GOODS_STORE,
-          payload: json,
-        });
-        return json;
-      })
-      .then((json) => {
-        dispatch({
-          type: GET_GOODS_AMMOUNT,
-          payload: json.length,
-        });
-        let buffer = json.slice();
-        // let newData = [];
-        // let length = json.length;
-        // for (let i = 0; i < length; i += 20) {
-        //   newData.push(...[buffer.splice(0, 20)]);
-        // }
-        // return newData;
-        // dispatch({
-        //   type: GET_GOODS_SUCCESS,
-        //   payload: json,
-        // });
-        return buffer;
-      })
-      .then((data) => {
+      .then((json) =>
         dispatch({
           type: GET_GOODS_SUCCESS,
-          payload: data,
-        });
-      });
+          payload: json,
+        })
+      );
+    // .then((json) => {
+    //   dispatch({
+    //     type: SET_GOODS_STORE,
+    //     payload: json,
+    //   });
+    //   return json;
+    // })
+    // .then((json) => {
+    //   dispatch({
+    //     type: GET_GOODS_AMMOUNT,
+    //     payload: json.length,
+    //   });
+    //   let buffer = json.slice();
+    //   // let newData = [];
+    //   // let length = json.length;
+    //   // for (let i = 0; i < length; i += 20) {
+    //   //   newData.push(...[buffer.splice(0, 20)]);
+    //   // }
+    //   // return newData;
+    //   // dispatch({
+    //   //   type: GET_GOODS_SUCCESS,
+    //   //   payload: json,
+    //   // });
+    //   return buffer;
+    // })
+    // .then((data) => {
+    //   dispatch({
+    //     type: GET_GOODS_SUCCESS,
+    //     payload: data,
+    //   });
+    // });
   };
 }
 export function getGoodsPage(page) {
