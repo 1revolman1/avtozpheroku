@@ -7,7 +7,7 @@ export function getGoods() {
     dispatch({
       type: GET_GOODS_REQUEST,
     });
-    fetch("http://localhost:8080/api/goods")
+    fetch("https://avtooporatest.herokuapp.com/api/goods")
       .then((response) => response.json())
       .then((json) => {
         dispatch({
