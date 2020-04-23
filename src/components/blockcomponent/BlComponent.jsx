@@ -8,6 +8,8 @@ import { getGoodsPage } from "../../actions/BlockComponentActions";
 import ProductsContainer from "../../containers/BlockProducts";
 import MenueContainer from "../../containers/BlockMenu";
 import { Pagination } from "@material-ui/lab";
+import Scroll from "react-scroll";
+
 const StyledPagination = styled(Pagination)`
   display: flex;
   justify-content: center;
@@ -32,6 +34,7 @@ const StyledButtonViewLine = styled.div`
 class BlComponent extends Component {
   handleChange = (event, value) => {
     this.props.getGoodsPage(value);
+    Scroll.animateScroll.scrollToTop();
   };
   render() {
     const { view, goods } = this.props;
