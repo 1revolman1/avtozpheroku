@@ -2,12 +2,13 @@ import {
   GET_GOODS_REQUEST,
   GET_GOODS_SUCCESS,
   GET_GOODS_AMMOUNT,
+  GET_GOODS_PAGE,
 } from "../actions/BlockComponentActions";
 const initialState = {
   products: [],
+  pageToShow: 1,
   ammount: 0,
-  isFetching: false, // изначально статус загрузки - ложь
-  // так как он станет true, когда запрос начнет выполнение
+  isFetching: false,
 };
 export function pageReducer(state = initialState, action) {
   switch (action.type) {
@@ -21,6 +22,8 @@ export function pageReducer(state = initialState, action) {
       };
     case GET_GOODS_AMMOUNT:
       return { ...state, ammount: action.payload };
+    case GET_GOODS_PAGE:
+      return { ...state, pageToShow: action.payload };
     default:
       return state;
   }

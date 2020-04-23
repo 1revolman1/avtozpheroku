@@ -4,9 +4,14 @@ import styled from "styled-components";
 import "./dropdown/index.scss";
 import { connect } from "react-redux";
 import { changeToLine, changeToBlock } from "../../actions/ViewCardAction";
+import { getGoodsPage } from "../../actions/BlockComponentActions";
 import ProductsContainer from "../../containers/BlockProducts";
 import MenueContainer from "../../containers/BlockMenu";
-
+import { Pagination } from "@material-ui/lab";
+const StyledPagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+`;
 const StyledButtonViewBlock = styled.div`
   background: ${(props) =>
     props.view === "block" ? "rgba(88, 169, 75, 0.3)" : "#d9d9d9"};
@@ -25,6 +30,9 @@ const StyledButtonViewLine = styled.div`
   }
 `;
 class BlComponent extends Component {
+  handleChange = (event, value) => {
+    this.props.getGoodsPage(value);
+  };
   render() {
     const { view, goods } = this.props;
     return (
@@ -77,6 +85,11 @@ class BlComponent extends Component {
           <MenueContainer />
           <ProductsContainer />
         </div>
+        <StyledPagination
+          count={goods.products.length}
+          page={goods.pageToShow}
+          onChange={this.handleChange}
+        />
       </div>
     );
   }
@@ -91,6 +104,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeToLine: (id) => dispatch(changeToLine("line")),
     changeToBlock: (id) => dispatch(changeToBlock("block")),
+    getGoodsPage: (page) => dispatch(getGoodsPage(page)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(BlComponent);

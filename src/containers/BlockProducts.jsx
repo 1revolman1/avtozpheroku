@@ -11,6 +11,7 @@ class ProductsContainer extends React.Component {
         view={view.view}
         products={goods.products}
         isFetching={goods.isFetching}
+        pageToShow={goods.pageToShow}
         getGoods={getGoods}
       />
     );

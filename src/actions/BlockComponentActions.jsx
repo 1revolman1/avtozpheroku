@@ -1,12 +1,13 @@
 export const GET_GOODS_REQUEST = "GET_GOODS_REQUEST";
 export const GET_GOODS_SUCCESS = "GET_GOODS_SUCCESS";
 export const GET_GOODS_AMMOUNT = "GET_GOODS_AMMOUNT";
+export const GET_GOODS_PAGE = "GET_GOODS_PAGE";
 export function getGoods() {
   return (dispatch) => {
     dispatch({
       type: GET_GOODS_REQUEST,
     });
-    fetch("https://avtooporatest.herokuapp.com/api/goods")
+    fetch("http://localhost:8080/api/goods")
       .then((response) => response.json())
       .then((json) => {
         dispatch({
@@ -15,8 +16,8 @@ export function getGoods() {
         });
         let newData = [];
         let length = json.length;
-        for (let i = 0; i < length; i += 9) {
-          newData.push(...[json.splice(0, 9)]);
+        for (let i = 0; i < length; i += 20) {
+          newData.push(...[json.splice(0, 20)]);
         }
         return newData;
         // dispatch({
@@ -35,6 +36,14 @@ export function getGoods() {
           payload: data,
         });
       });
+  };
+}
+export function getGoodsPage(page) {
+  return (dispatch) => {
+    dispatch({
+      type: GET_GOODS_PAGE,
+      payload: page,
+    });
   };
 }
 // "http://localhost:8080/api/goods"
