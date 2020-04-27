@@ -30,8 +30,8 @@ export default class Products extends Component {
       if (this.props.menuSelected) {
         let menu = this.props.menuSelected;
         let filteredArray = [];
-        //Генерация при отмене фильтрации
-        if (menu["Бренд"].length > 0) {
+        //Генерация при отмене фильтрации Вязкость
+        if (menu["Бренд"] && menu["Бренд"].length > 0) {
           menu["Бренд"].forEach((menuValue) => {
             filteredArray = filteredArray.concat(
               buffer.filter((card) =>
@@ -39,6 +39,21 @@ export default class Products extends Component {
               )
             );
           });
+          if (menu["Вязкость"] && menu["Вязкость"].length > 0) {
+            menu["Вязкость"].forEach((menuValue) => {
+              let arr = filteredArray.filter(
+                (card) =>
+                  card.text
+                    .split(" ")
+                    .filter((text) => text === menuValue.value.trim())[0]
+              );
+              console.log(arr);
+              filteredArray = arr;
+            });
+            if (filteredArray.length === 0) {
+              filteredArray = [{ text: "none" }];
+            }
+          }
           buffer = filteredArray;
         }
       }
@@ -47,42 +62,26 @@ export default class Products extends Component {
       for (let i = 0; i < length; i += 20) {
         newData.push(...[buffer.splice(0, 20)]);
       }
+      console.log("NewData ", newData);
       const listGoods = newData[index].map((data, index) => {
-        return (
-          <Card
-            menuSelected={this.props.menuSelected}
-            view={this.props.view}
-            key={index}
-            proizvod={data.proizvod}
-            text={data.text}
-            code={data.code}
-            price={data.price}
-            img={data.img}
-          />
-        );
+        if (data.text === "none") {
+          return <div>Нет товаров в данной категории!</div>;
+        } else
+          return (
+            <Card
+              menuSelected={this.props.menuSelected}
+              view={this.props.view}
+              key={index}
+              proizvod={data.proizvod}
+              text={data.text}
+              code={data.code}
+              price={data.price}
+              img={data.img}
+            />
+          );
       });
       return listGoods;
     }
-
-    //Предотвратить вызов когда нету данных
-    // if (products[0] !== undefined) {
-    //   // const listGoods = newData[index].map((data, index) => {
-    //   //   return (
-    //   //     <Card
-    //   //       view={this.props.view}
-    //   //       key={index}
-    //   //       proizvod={data.proizvod}
-    //   //       text={data.text}
-    //   //       code={data.code}
-    //   //       price={data.price}
-    //   //       img={data.img}
-    //   //     />
-    //   //   );
-    //   // });
-    //   return listGoods;
-    // } else {
-    //   return <div>Loading...</div>;
-    // }
   };
   render() {
     const {
@@ -92,6 +91,7 @@ export default class Products extends Component {
       isFetching,
       view,
       pageToShow,
+      // sendProductAmmount,
     } = this.props;
     return (
       <React.Fragment>
@@ -102,7 +102,7 @@ export default class Products extends Component {
             <LoadingDiv>Загружаю товар...</LoadingDiv>
           )}
         </ProductsDiv>
-        <div>
+        {/* <div>
           <p>fsdfdsgd</p>
           <button
             onClick={() => {
@@ -124,7 +124,7 @@ export default class Products extends Component {
           >
             Click
           </button>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }

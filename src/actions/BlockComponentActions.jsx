@@ -11,12 +11,13 @@ export function getGoods() {
     });
     fetch("http://localhost:8080/api/goods")
       .then((response) => response.json())
-      .then((json) =>
+      .then((json) => {
         dispatch({
           type: GET_GOODS_SUCCESS,
           payload: json,
-        })
-      );
+        });
+        return json;
+      });
     // .then((json) => {
     //   dispatch({
     //     type: SET_GOODS_STORE,
@@ -24,6 +25,13 @@ export function getGoods() {
     //   });
     //   return json;
     // })
+    // .then((json) => {
+    //   dispatch({
+    //     type: GET_GOODS_AMMOUNT,
+    //     payload: json.length,
+    //   });
+    //   return json;
+    // });
     // .then((json) => {
     //   dispatch({
     //     type: GET_GOODS_AMMOUNT,
@@ -63,6 +71,14 @@ export function changeProducts(products) {
     dispatch({
       type: SET_GOODS_NEW,
       payload: products,
+    });
+  };
+}
+export function sendProductAmmount(ammount) {
+  return (dispatch) => {
+    dispatch({
+      type: GET_GOODS_AMMOUNT,
+      payload: ammount,
     });
   };
 }

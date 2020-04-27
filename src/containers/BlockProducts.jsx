@@ -1,11 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import Products from "../components/blockproducts/Products";
-import { getGoods, changeProducts } from "../actions/BlockComponentActions";
+import {
+  getGoods,
+  // changeProducts,
+  sendProductAmmount,
+} from "../actions/BlockComponentActions";
 
 class ProductsContainer extends React.Component {
   render() {
-    const { menu, goods, getGoods, changeProducts, view } = this.props;
+    const {
+      menu,
+      goods,
+      getGoods,
+      // changeProducts,
+      view,
+      sendProductAmmount,
+    } = this.props;
     return (
       <Products
         menuSelected={menu}
@@ -16,6 +27,7 @@ class ProductsContainer extends React.Component {
         // goodsStore={goods.goodsStore}
         getGoods={getGoods}
         // changeProducts={changeProducts}
+        sendProductAmmount={sendProductAmmount}
       />
     );
   }
@@ -30,7 +42,8 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getGoods: () => dispatch(getGoods()),
-    changeProducts: (products) => dispatch(changeProducts(products)),
+    // changeProducts: (products) => dispatch(changeProducts(products)),
+    sendProductAmmount: (ammount) => dispatch(sendProductAmmount(ammount)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
