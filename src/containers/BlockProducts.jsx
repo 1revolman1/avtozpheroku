@@ -5,10 +5,11 @@ import { getGoods, changeProducts } from "../actions/BlockComponentActions";
 
 class ProductsContainer extends React.Component {
   render() {
-    const { goods, getGoods, changeProducts, view } = this.props;
+    const { menu, goods, getGoods, changeProducts, view } = this.props;
     return (
       <Products
-        view={view.view}
+        menuSelected={menu}
+        view={view}
         products={goods.products}
         isFetching={goods.isFetching}
         pageToShow={goods.pageToShow}
@@ -22,7 +23,8 @@ class ProductsContainer extends React.Component {
 const mapStateToProps = (store) => {
   return {
     goods: store.goods,
-    view: store.view,
+    view: store.view.view,
+    menu: store.menu.selectedOption,
   };
 };
 const mapDispatchToProps = (dispatch) => {

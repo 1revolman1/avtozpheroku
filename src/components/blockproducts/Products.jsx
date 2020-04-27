@@ -26,6 +26,15 @@ export default class Products extends Component {
   renderCard = (products, index = 0) => {
     if (products.length) {
       let buffer = products.slice();
+      //Если есть элементы в фильтре
+      if (this.props.menuSelected) {
+        let menu = this.props.menuSelected;
+        let filteredArray = [];
+        menu["Бренд"].forEach((e) => {
+          console.log(e.value);
+          // buffer.filter((element) => element.proizvod == e.value);
+        });
+      }
       let newData = [];
       let length = buffer.length;
       for (let i = 0; i < length; i += 20) {
@@ -34,6 +43,7 @@ export default class Products extends Component {
       const listGoods = newData[index].map((data, index) => {
         return (
           <Card
+            menuSelected={this.props.menuSelected}
             view={this.props.view}
             key={index}
             proizvod={data.proizvod}
