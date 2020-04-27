@@ -30,10 +30,17 @@ export default class Products extends Component {
       if (this.props.menuSelected) {
         let menu = this.props.menuSelected;
         let filteredArray = [];
-        menu["Бренд"].forEach((e) => {
-          console.log(e.value);
-          // buffer.filter((element) => element.proizvod == e.value);
-        });
+        //Генерация при отмене фильтрации
+        if (menu["Бренд"].length > 0) {
+          menu["Бренд"].forEach((menuValue) => {
+            filteredArray = filteredArray.concat(
+              buffer.filter((card) =>
+                card.proizvod.includes(menuValue.value.trim())
+              )
+            );
+          });
+          buffer = filteredArray;
+        }
       }
       let newData = [];
       let length = buffer.length;
