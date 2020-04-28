@@ -1,16 +1,13 @@
 import {
   GET_GOODS_REQUEST,
   GET_GOODS_SUCCESS,
-  GET_GOODS_AMMOUNT,
   GET_GOODS_PAGE,
   SET_GOODS_STORE,
-  SET_GOODS_NEW,
 } from "../actions/BlockComponentActions";
 const initialState = {
   products: [],
-  // goodsStore: [],
+  goodsStore: [],
   pageToShow: 1,
-  ammount: 0,
   isFetching: false,
 };
 export function pageReducer(state = initialState, action) {
@@ -23,12 +20,8 @@ export function pageReducer(state = initialState, action) {
         products: action.payload,
         isFetching: false,
       };
-    // case SET_GOODS_STORE:
-    //   return { ...state, goodsStore: action.payload };
-    // case SET_GOODS_NEW:
-    //   return { ...state, goodsStore: action.payload };
-    case GET_GOODS_AMMOUNT:
-      return { ...state, ammount: action.payload };
+    case SET_GOODS_STORE:
+      return { ...state, goodsStore: action.payload };
     case GET_GOODS_PAGE:
       return { ...state, pageToShow: action.payload };
     default:

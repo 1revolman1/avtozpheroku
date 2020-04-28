@@ -6,8 +6,47 @@ export default class Menus extends Component {
   componentDidMount = () => {
     this.props.getMenues();
   };
-  handleChange = (selectedOption, withcSelected) => {
-    this.props.setFilter(selectedOption, withcSelected);
+  changeGoods = () => {
+    let menu = this.props.selectedOption;
+    let buffer = this.props.products;
+    buffer = Object.keys(menu).reduce(function (
+      changedArray,
+      currentCategory,
+      index,
+      menuCategories
+    ) {
+      let associating = {
+        Бренд: "proizvod",
+        Тип: "text",
+        Вязкость: "text",
+      };
+      if (Object.values(menu)[index] && Object.values(menu)[index].length > 0) {
+        let bufferedArray = [];
+        let filterSubject = Object.values(menu)[index];
+        filterSubject.forEach((menuValue) => {
+          bufferedArray = bufferedArray.concat(
+            changedArray.filter((card) =>
+              card[associating[Object.keys(menu)[index]]].includes(
+                menuValue.value.trim()
+              )
+            )
+          );
+          if (bufferedArray.length === 0) {
+            bufferedArray = [{ text: "none" }];
+          }
+        });
+        return bufferedArray;
+      } else {
+        return changedArray;
+      }
+    },
+    buffer);
+    this.props.getGoodsPage(1);
+    this.props.changeProducts(buffer);
+  };
+  handleChange = async (selectedOption, withcSelected) => {
+    await this.props.setFilter(selectedOption, withcSelected);
+    await this.changeGoods();
   };
   renderDropDown = (DropDownData) => {
     const listItems = DropDownData.map((data, index) => {

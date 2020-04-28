@@ -2,7 +2,7 @@ export const GET_MENUES_REQUEST = "GET_MENUES_REQUEST";
 export const GET_MENUES_SUCCESS = "GET_MENUES_SUCCESS";
 export const GET_MENUES_ERROR = "GET_MENUES_ERROR";
 export const SET_MENUES_SETTINGS = "SET_MENUES_SETTINGS";
-export function getMenues(t) {
+export function getMenues() {
   return (dispatch) => {
     dispatch({
       type: GET_MENUES_REQUEST,

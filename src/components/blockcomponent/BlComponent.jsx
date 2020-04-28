@@ -71,7 +71,7 @@ class BlComponent extends Component {
           <h1>Масло моторное </h1>
           <div className={styles.productContainer_header_settings}>
             <div className={styles.productContainer_header_settings_info}>
-              <p>Найдено {goods.products.length} товара в категории</p>
+              <p>Найдено {goods.goodsStore.length} товара в категории</p>
             </div>
             <div className={styles.productContainer_header_settings_setting}>
               <select
@@ -117,7 +117,7 @@ class BlComponent extends Component {
         </div>
         <StyledPagination
           size="large"
-          count={Math.ceil(goods.products.length / 20)}
+          count={Math.ceil(goods.goodsStore.length / 20)}
           page={goods.pageToShow}
           onChange={this.handleChange}
         />
