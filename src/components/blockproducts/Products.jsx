@@ -25,38 +25,83 @@ export default class Products extends Component {
   };
   renderCard = (products, index = 0) => {
     if (products.length) {
+      // let buffer = products;
       let buffer = products.slice();
       //Если есть элементы в фильтре
       if (this.props.menuSelected) {
         let menu = this.props.menuSelected;
-        let filteredArray = [];
-        //Генерация при отмене фильтрации Вязкость
-        if (menu["Бренд"] && menu["Бренд"].length > 0) {
-          menu["Бренд"].forEach((menuValue) => {
-            filteredArray = filteredArray.concat(
-              buffer.filter((card) =>
-                card.proizvod.includes(menuValue.value.trim())
-              )
-            );
-          });
-          if (menu["Вязкость"] && menu["Вязкость"].length > 0) {
-            menu["Вязкость"].forEach((menuValue) => {
-              let arr = filteredArray.filter(
-                (card) =>
-                  card.text
-                    .split(" ")
-                    .filter((text) => text === menuValue.value.trim())[0]
+        buffer = Object.keys(menu).reduce(function (
+          changedArray,
+          currentCategory,
+          index,
+          menuCategories
+        ) {
+          let associating = {
+            Бренд: "proizvod",
+            Вязкость: "text",
+          };
+          if (
+            Object.values(menu)[index] &&
+            Object.values(menu)[index].length > 0
+          ) {
+            let bufferedArray = [];
+            let filterSubject = Object.values(menu)[index];
+            console.log(filterSubject);
+            filterSubject.forEach((menuValue) => {
+              bufferedArray = bufferedArray.concat(
+                changedArray.filter((card) =>
+                  card[associating[Object.keys(menu)[index]]].includes(
+                    menuValue.value.trim()
+                  )
+                )
               );
-              console.log(arr);
-              filteredArray = arr;
+              if (bufferedArray.length === 0) {
+                bufferedArray = [{ text: "none" }];
+              }
             });
-            if (filteredArray.length === 0) {
-              filteredArray = [{ text: "none" }];
-            }
+            return bufferedArray;
+          } else {
+            return changedArray;
           }
-          buffer = filteredArray;
-        }
+        },
+        buffer);
       }
+      console.log("Buffer after menu ", buffer);
+      // if (this.props.menuSelected) {
+      //   let menu = this.props.menuSelected;
+      //   let filteredArray = [];
+      //   let savedValue = [];
+      //   //Генерация при отмене фильтрации Вязкость
+      //   if (menu["Бренд"] && menu["Бренд"].length > 0) {
+      //     menu["Бренд"].forEach((menuValue) => {
+      //       savedValue = savedValue.concat(
+      //         buffer.filter((card) =>
+      //           card.proizvod.includes(menuValue.value.trim())
+      //         )
+      //       );
+      //     });
+      //     if (menu["Вязкость"] && menu["Вязкость"].length > 0) {
+      //       menu["Вязкость"].forEach((menuValue) => {
+      //         let arr = savedValue.filter(
+      //           (card) =>
+      //             card.text
+      //               .split(" ")
+      //               .filter((text) => text === menuValue.value.trim())[0]
+      //         );
+      //         console.log(arr);
+      //         savedValue = arr;
+      //       });
+      //       // if (savedValue.length === 0) {
+      //       //   savedValue = [{ text: "none" }];
+      //       // }
+      //     }
+      //     if (savedValue.length === 0) {
+      //       savedValue = [{ text: "none" }];
+      //     }
+      //     filteredArray = savedValue;
+      //   }
+      //   buffer = filteredArray;
+      // }
       let newData = [];
       let length = buffer.length;
       for (let i = 0; i < length; i += 20) {
