@@ -7,6 +7,7 @@ import { changeToLine, changeToBlock } from "../../actions/ViewCardAction";
 import { getGoodsPage } from "../../actions/BlockComponentActions";
 import ProductsContainer from "../../containers/BlockProducts";
 import MenueContainer from "../../containers/BlockMenu";
+import SelectOption from "../../containers/SelectOption";
 import { Pagination } from "@material-ui/lab";
 import Scroll from "react-scroll";
 
@@ -74,7 +75,8 @@ class BlComponent extends Component {
               <p>Найдено {goods.goodsStore.length} товара в категории</p>
             </div>
             <div className={styles.productContainer_header_settings_setting}>
-              <select
+              <SelectOption />
+              {/* <select
                 className={styles.productContainer_header_settings_setting_menu}
               >
                 <option value="default">По умолчанию</option>
@@ -83,15 +85,15 @@ class BlComponent extends Component {
                 <option value="priceBg">
                   Сортировать по цене(возрастание)
                 </option>
-              </select>
+              </select> */}
               <StyledButtonViewBlock
                 className={
                   styles.productContainer_header_settings_setting_view_box
                 }
                 view={view.view}
                 onClick={() => {
-                  console.log("block");
-                  this.props.changeToBlock();
+                  if (this.props.view.view !== "block")
+                    this.props.changeToBlock();
                 }}
               >
                 <span></span> <span></span> <span></span> <span></span>
@@ -102,8 +104,8 @@ class BlComponent extends Component {
                 }
                 view={view.view}
                 onClick={() => {
-                  console.log("line");
-                  this.props.changeToLine();
+                  if (this.props.view.view !== "line")
+                    this.props.changeToLine();
                 }}
               >
                 <span></span>

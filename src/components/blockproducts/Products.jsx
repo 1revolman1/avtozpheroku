@@ -46,6 +46,8 @@ export default class Products extends Component {
               code={data.code}
               price={data.price}
               img={data.img}
+              buyerslike={data.buyerslike}
+              hotprice={data.hotprice}
             />
           );
       });

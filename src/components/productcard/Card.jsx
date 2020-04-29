@@ -16,13 +16,21 @@ export default class Card extends Component {
       count: 1,
       inCart: false,
       inFavourite: false,
-      buyerslike: false,
-      hotprice: false,
+      // buyerslike: false,
+      // hotprice: false,
     };
   }
   render() {
-    const { hotprice, buyerslike } = this.state;
-    const { view, proizvod, text, code, price, img } = this.props;
+    const {
+      view,
+      proizvod,
+      text,
+      code,
+      price,
+      img,
+      buyerslike,
+      hotprice,
+    } = this.props;
     return (
       <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
@@ -54,12 +62,12 @@ export default class Card extends Component {
           <img src={star} alt="star" />
         </BlockFavourite>
         <div className={styles.productCard_categories}>
-          {buyerslike ? (
+          {hotprice ? (
             <div className={styles.productCard_categories_percent}>
               <span>–12%</span>
             </div>
           ) : null}
-          {hotprice ? (
+          {buyerslike ? (
             <div className={styles.productCard_categories_hot}>
               <span>Хит продаж</span>
             </div>
