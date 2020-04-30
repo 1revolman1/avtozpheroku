@@ -86,7 +86,6 @@ export default class SliderComponent extends Component {
     return block;
   };
   render() {
-    console.log(window.innerWidth);
     return (
       <div className={styles.blockSlider}>
         <h2>Вы просматривали товары</h2>

@@ -4,6 +4,7 @@ import NowPage from "../components/nowpage/Nowpage";
 import BlComponent from "../components/blockcomponent/BlComponent";
 import TextImg from "../components/textimgcomponent/TextImgComponent";
 import SliderComponent from "../components/slidercomponent/SliderComponent";
+import Footer from "../components/footer/Footer";
 export default function Main() {
   return (
     <React.Fragment>
@@ -18,6 +19,7 @@ export default function Main() {
       <BlComponent />
       <TextImg />
       <SliderComponent />
+      <Footer />
     </React.Fragment>
   );
 }
