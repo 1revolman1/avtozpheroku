@@ -1,0 +1,16 @@
+.BrainhubCarousel__dot,
+.BrainhubCarousel__dots {
+  &--selected {
+    &:before {
+      opacity: 1;
+      background: #58a94b !important;
+    }
+  }
+  &:before {
+    width: 13px !important;
+    height: 13px !important;
+  }
+}
+.BrainhubCarousel__dot {
+  opacity: 0.2 !important;
+}

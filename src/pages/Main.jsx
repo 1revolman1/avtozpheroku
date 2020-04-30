@@ -18,7 +18,6 @@ export default function Main() {
       <BlComponent />
       <TextImg />
       <SliderComponent />
-      {/* <div>Home</div> */}
     </React.Fragment>
   );
 }
