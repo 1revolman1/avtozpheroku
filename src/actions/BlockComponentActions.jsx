@@ -4,6 +4,7 @@ export const GET_GOODS_PAGE = "GET_GOODS_PAGE";
 export const SET_GOODS_STORE = "SET_GOODS_STORE";
 export const SET_GOODS_NEW = "SET_GOODS_NEW";
 // https://avtooporatest.herokuapp.com/api/goods
+// http://localhost:8080/api/goods
 export function getGoods() {
   return (dispatch) => {
     dispatch({

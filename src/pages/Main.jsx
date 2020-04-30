@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../components/header/Header";
 import NowPage from "../components/nowpage/Nowpage";
 import BlComponent from "../components/blockcomponent/BlComponent";
+import TextImg from "../components/textimgcomponent/TextImgComponent";
+import SliderComponent from "../components/slidercomponent/SliderComponent";
 export default function Main() {
   return (
     <React.Fragment>
@@ -14,6 +16,8 @@ export default function Main() {
         ]}
       />
       <BlComponent />
+      <TextImg />
+      <SliderComponent />
       {/* <div>Home</div> */}
     </React.Fragment>
   );

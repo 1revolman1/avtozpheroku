@@ -16,8 +16,6 @@ export default class Card extends Component {
       count: 1,
       inCart: false,
       inFavourite: false,
-      // buyerslike: false,
-      // hotprice: false,
     };
   }
   render() {

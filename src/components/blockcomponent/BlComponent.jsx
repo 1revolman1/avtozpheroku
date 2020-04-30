@@ -76,16 +76,6 @@ class BlComponent extends Component {
             </div>
             <div className={styles.productContainer_header_settings_setting}>
               <SelectOption />
-              {/* <select
-                className={styles.productContainer_header_settings_setting_menu}
-              >
-                <option value="default">По умолчанию</option>
-                <option value="popular">Самые популярные</option>
-                <option value="priceSm">Сортировать по цене(убывание)</option>
-                <option value="priceBg">
-                  Сортировать по цене(возрастание)
-                </option>
-              </select> */}
               <StyledButtonViewBlock
                 className={
                   styles.productContainer_header_settings_setting_view_box

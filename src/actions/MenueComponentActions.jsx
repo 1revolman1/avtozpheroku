@@ -2,6 +2,8 @@ export const GET_MENUES_REQUEST = "GET_MENUES_REQUEST";
 export const GET_MENUES_SUCCESS = "GET_MENUES_SUCCESS";
 export const GET_MENUES_ERROR = "GET_MENUES_ERROR";
 export const SET_MENUES_SETTINGS = "SET_MENUES_SETTINGS";
+// https://avtooporatest.herokuapp.com/api/menu
+// http://localhost:8080/api/menu
 export function getMenues() {
   return (dispatch) => {
     dispatch({

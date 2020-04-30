@@ -1,0 +1,23 @@
+.blockSlider {
+  margin: 0 auto;
+  margin-top: 95px;
+  width: 80%;
+  max-width: 1440px;
+  h2 {
+    font-family: "Rubik", sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    margin-bottom: 32px;
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
