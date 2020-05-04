@@ -9,7 +9,7 @@ export function getMenues() {
     dispatch({
       type: GET_MENUES_REQUEST,
     });
-    fetch("http://localhost:8080/api/menu")
+    fetch("https://avtooporatest.herokuapp.com/api/menu")
       .then((response) => response.json())
       .then((json) =>
         dispatch({

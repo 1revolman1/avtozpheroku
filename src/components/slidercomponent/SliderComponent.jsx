@@ -101,12 +101,10 @@ export default class SliderComponent extends Component {
             600: {
               slidesPerPage: 1,
               arrows: false,
-              centered: true,
             },
             900: {
               slidesPerPage: 2,
               arrows: false,
-              centered: true,
             },
             1400: {
               slidesPerPage: 3,

@@ -4,6 +4,7 @@ import styles from "./Card.module.scss";
 import cart from "../../assets/supermarket.svg";
 import star from "../../assets/star.svg";
 import Counter from "./counter/Counter";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BlockFavourite = styled.div`
   background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
@@ -32,7 +33,8 @@ export default class Card extends Component {
     return (
       <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
-          <img alt="oil" src={img} />
+          <LazyLoadImage alt="oil" src={img} />
+          />
         </div>
         <div className={styles.productCard_textContent}>
           <h4>{proizvod}</h4>
