@@ -10,7 +10,7 @@ const BlockFavourite = styled.div`
   background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
 `;
 
-export default class Card extends Component {
+export default class Card extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
