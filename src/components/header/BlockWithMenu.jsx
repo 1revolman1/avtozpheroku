@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import styled from "styled-components";
 import Dropdown from "./dropdown/Dropdown";
 import SearchBar from "./searcher/SearchBar";
@@ -33,6 +36,7 @@ const StyledButtonsDiv = styled.div`
 `;
 const StyledButtonDiv = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   & > img {
     width: 20px;
@@ -51,8 +55,38 @@ const StyledButtonDiv = styled.div`
     letter-spacing: 1px;
     color: #ffffff;
   }
+  & > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 `;
-export default class BlockWithMenu extends Component {
+const StyledSpan = styled.span`
+  display: ${(props) => (props.show ? "block" : "none")};
+  font-family: "Rubik", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #ffffff;
+  position: absolute;
+  top: 10%;
+  left: -5px;
+  padding: 1px;
+  background: #58a94b;
+  /* background: rgba(88, 169, 75, 0.3); */
+  border-radius: 50%;
+  @media screen and (max-width: 1280px) {
+    top: -5px;
+    left: -5px;
+  }
+`;
+
+class BlockWithMenu extends Component {
   constructor() {
     super();
     this.state = {
@@ -91,6 +125,7 @@ export default class BlockWithMenu extends Component {
     };
   }
   render() {
+    const { favourite, whantToBuy } = this.props.cart;
     return (
       <WrapperBlockDiv wg="80%">
         <Dropdown
@@ -102,15 +137,29 @@ export default class BlockWithMenu extends Component {
         <SearchBar wg="52%" />
         <StyledButtonsDiv wg="25%">
           <StyledButtonDiv>
-            <img src={star} />
+            <Link to="/favourite"></Link>
+            <img src={star} alt="start infavvourite" />
             <p>Избранное</p>
+            <StyledSpan show={favourite.length > 0 ? true : false}>
+              {favourite.length}
+            </StyledSpan>
           </StyledButtonDiv>
           <StyledButtonDiv>
-            <img src={cart} />
+            <Link to="/bought"></Link>
+            <img src={cart} alt="shopcart" />
             <p>Корзина</p>
+            <StyledSpan show={whantToBuy.length > 0 ? true : false}>
+              {whantToBuy.length}
+            </StyledSpan>
           </StyledButtonDiv>
         </StyledButtonsDiv>
       </WrapperBlockDiv>
     );
   }
 }
+const mapStateToProps = (store) => {
+  return {
+    cart: store.cart,
+  };
+};
+export default connect(mapStateToProps)(BlockWithMenu);

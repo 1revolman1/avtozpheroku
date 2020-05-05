@@ -1,16 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import styles from "./Card.module.scss";
 import cart from "../../assets/supermarket.svg";
 import star from "../../assets/star.svg";
-import Counter from "./counter/Counter";
+import cartStyle from "./counter/Counter.module.scss";
+
+import { connect } from "react-redux";
+import {
+  setInfavourite,
+  deleteInfavourite,
+  setInbuy,
+} from "../../actions/CartAction";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BlockFavourite = styled.div`
   background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
 `;
 
-export default class Card extends React.PureComponent {
+class Card extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +28,20 @@ export default class Card extends React.PureComponent {
       product: null,
     };
   }
+
   componentDidMount = (e) => {
     this.setState({ product: this.props.data });
   };
   render() {
     const { proizvod, text, code, price, img } = this.props.data;
-    const { view, hotprice, buyerslike } = this.props;
+    const {
+      view,
+      hotprice,
+      buyerslike,
+      setInfavourite,
+      deleteInfavourite,
+      setInbuy,
+    } = this.props;
     return (
       <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
@@ -40,17 +56,68 @@ export default class Card extends React.PureComponent {
         <div className={styles.productCard_priceList}>
           <p>{price}</p>
           <div className={styles.productCard_priceList_buttons}>
-            <Counter />
-            <div className={styles.productCard_priceList_buttons_toCart}>
+            <div className={cartStyle.cardCounter}>
+              <span>{this.state.count}</span>
+              <div className={cartStyle.cardCounter_button}>
+                <button
+                  pos="inc"
+                  onClick={() => this.setState({ count: this.state.count + 1 })}
+                >
+                  <svg
+                    height="20"
+                    width="20"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="grey"
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    ></path>
+                  </svg>
+                </button>
+                <button
+                  pos="dec"
+                  onClick={() => {
+                    if (this.state.count > 1)
+                      return this.setState({ count: this.state.count - 1 });
+                  }}
+                >
+                  <svg
+                    height="20"
+                    width="20"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      fill="grey"
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              onClick={() => {
+                setInbuy(this.state.product, this.state.count);
+              }}
+              className={styles.productCard_priceList_buttons_toCart}
+            >
               <p>В корзину</p>
               <img alt="cart" src={cart} />
             </div>
           </div>
         </div>
         <BlockFavourite
-          onClick={() =>
-            this.setState({ inFavourite: !this.state.inFavourite })
-          }
+          onClick={async () => {
+            await this.setState({ inFavourite: !this.state.inFavourite });
+            if (this.state.inFavourite) {
+              await setInfavourite(this.state.product);
+            } else {
+              await deleteInfavourite(this.state.product);
+            }
+          }}
           active={this.state.inFavourite}
           className={styles.productCard_favourite}
         >
@@ -72,3 +139,16 @@ export default class Card extends React.PureComponent {
     );
   }
 }
+const mapStateToProps = (store) => {
+  return {
+    cart: store.cart,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setInfavourite: (product) => dispatch(setInfavourite(product)),
+    setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
+    deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
