@@ -35,21 +35,7 @@ export default class Products extends Component {
       const listGoods = newData[index].map((data, index) => {
         if (data.text === "none") {
           return <div>Нет товаров в данной категории!</div>;
-        } else
-          return (
-            <Card
-              menuSelected={this.props.menuSelected}
-              view={this.props.view}
-              key={index}
-              proizvod={data.proizvod}
-              text={data.text}
-              code={data.code}
-              price={data.price}
-              img={data.img}
-              buyerslike={data.buyerslike}
-              hotprice={data.hotprice}
-            />
-          );
+        } else return <Card data={data} view={this.props.view} key={index} />;
       });
       return listGoods;
     }

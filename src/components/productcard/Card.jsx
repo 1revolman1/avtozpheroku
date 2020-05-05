@@ -17,24 +17,19 @@ export default class Card extends React.PureComponent {
       count: 1,
       inCart: false,
       inFavourite: false,
+      product: null,
     };
   }
+  componentDidMount = (e) => {
+    this.setState({ product: this.props.data });
+  };
   render() {
-    const {
-      view,
-      proizvod,
-      text,
-      code,
-      price,
-      img,
-      buyerslike,
-      hotprice,
-    } = this.props;
+    const { proizvod, text, code, price, img } = this.props.data;
+    const { view, hotprice, buyerslike } = this.props;
     return (
       <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
           <LazyLoadImage alt="oil" src={img} />
-          />
         </div>
         <div className={styles.productCard_textContent}>
           <h4>{proizvod}</h4>
