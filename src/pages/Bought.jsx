@@ -1,8 +1,13 @@
 import React from "react";
-export default function Bought() {
+import { Link } from "react-router-dom";
+import BlockCheckout from "../components/blockcomponent/BlockCheckout";
+
+export default function Favourite() {
   return (
     <React.Fragment>
-      <h1>Bought</h1>
+      <h1>Вам нравится: </h1>
+      <Link to="/">кликни</Link>
+      <BlockCheckout />
     </React.Fragment>
   );
 }

@@ -5,6 +5,7 @@ import Card from "../productcard/Card";
 
 const ProductsDiv = styled.div`
   flex-direction: ${(props) => (props.view === "line" ? "column" : "row")};
+  width: ${(props) => (props.showFilter ? "80%" : "100%")};
 `;
 const LoadingDiv = styled.div`
   margin: 0 auto;
@@ -21,7 +22,7 @@ export default class Products extends Component {
     this.setState({ pages: value });
   };
   componentDidMount = (e) => {
-    this.props.getGoods();
+    if (this.props.products.length === 0) this.props.getGoods();
   };
   renderCard = (products, index = 0) => {
     if (products.length) {

@@ -33,15 +33,16 @@ class Card extends React.PureComponent {
     this.setState({ product: this.props.data });
   };
   render() {
-    const { proizvod, text, code, price, img } = this.props.data;
     const {
-      view,
-      hotprice,
+      proizvod,
+      text,
+      code,
+      price,
+      img,
       buyerslike,
-      setInfavourite,
-      deleteInfavourite,
-      setInbuy,
-    } = this.props;
+      hotprice,
+    } = this.props.data;
+    const { view, setInfavourite, deleteInfavourite, setInbuy } = this.props;
     return (
       <div view={view} className={styles.productCard}>
         <div className={styles.productCard_imagebl}>

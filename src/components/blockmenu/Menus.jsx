@@ -4,7 +4,7 @@ import DropDown from "../blockcomponent/dropdown/dropdown";
 
 export default class Menus extends Component {
   componentDidMount = () => {
-    this.props.getMenues();
+    if (this.props.menues.length === 0) this.props.getMenues();
   };
   changeGoods = () => {
     let menu = this.props.selectedOption;
