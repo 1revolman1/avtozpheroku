@@ -19,6 +19,9 @@ export function cartReducer(state = initialState, action) {
         favourite: state.favourite.filter(function (item) {
           return !item.code[1].includes(action.payload.code[1]);
         }),
+        // state.favourite.filter(function (item) {
+        //   return !item.code[1].includes(action.payload.code[1]);
+        // }),
       };
     case SET_CART_BUY:
       return {

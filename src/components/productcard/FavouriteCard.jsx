@@ -105,13 +105,8 @@ export default class FavouriteCard extends React.PureComponent {
           </div>
         </div>
         <BlockFavourite
-          onClick={async () => {
-            await this.setState({ inFavourite: !this.state.inFavourite });
-            if (this.state.inFavourite) {
-              await setInfavourite(this.state.product);
-            } else {
-              await deleteInfavourite(this.state.product);
-            }
+          onClick={() => {
+            deleteInfavourite(this.props.product);
           }}
           active={this.state.inFavourite}
           className={styles.productCard_favourite}
