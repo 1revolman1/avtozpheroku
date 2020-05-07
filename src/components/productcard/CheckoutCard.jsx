@@ -1,33 +1,21 @@
 import React from "react";
-// import styled from "styled-components";
 import styles from "./CheckoutCard.module.scss";
 import cartStyle from "./counter/Counter.module.scss";
 import { connect } from "react-redux";
-import {
-  // setInfavourite,
-  // deleteInfavourite,
-  setInbuy,
-  // changeAmmountInbuy,
-} from "../../actions/CartAction";
-
+import { changeInbuy, deleteInbuy } from "../../actions/CartAction";
+import svg from "./interface.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
 class CheckoutCard extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      count: 1,
-      inCart: false,
-      inFavourite: false,
-      product: null,
+      count: this.props.product.ammount,
+      product: this.props.product.product,
     };
   }
-
-  componentDidMount = (e) => {
-    this.setState({
-      product: this.props.product.product,
-      count: this.props.product.ammount,
-    });
+  componentDidUpdate = (e) => {
+    if (this.state.product.code[0] !== this.props.product.product.code[0])
+      this.setState({ product: this.props.product.product });
   };
   render() {
     const {
@@ -37,8 +25,8 @@ class CheckoutCard extends React.PureComponent {
       img,
       hotprice,
       buyerslike,
-    } = this.props.product.product;
-    const { setInbuy } = this.props;
+    } = this.props.product["product"];
+    const { changeInbuy, deleteInbuy } = this.props;
     return (
       <div className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
@@ -62,9 +50,15 @@ class CheckoutCard extends React.PureComponent {
                   <div className={cartStyle.cardCounter_button}>
                     <button
                       pos="inc"
-                      onClick={async () => {
-                        await this.setState({ count: this.state.count + 1 });
-                        await setInbuy(this.state.product, this.state.count);
+                      onClick={() => {
+                        this.setState(
+                          {
+                            count: this.state.count + 1,
+                          },
+                          () => {
+                            changeInbuy(this.state.product, this.state.count);
+                          }
+                        );
                       }}
                     >
                       <svg
@@ -84,8 +78,9 @@ class CheckoutCard extends React.PureComponent {
                       pos="dec"
                       onClick={async () => {
                         if (this.state.count > 1) {
-                          await this.setState({ count: this.state.count - 1 });
-                          await setInbuy(this.state.product, this.state.count);
+                          this.setState({ count: this.state.count - 1 }, () => {
+                            changeInbuy(this.state.product, this.state.count);
+                          });
                         }
                       }}
                     >
@@ -107,7 +102,7 @@ class CheckoutCard extends React.PureComponent {
               </div>
             </div>
             <p className={styles.productCard_block_priceList_witoutSelector}>
-              {Math.ceil(Number(price.split(" ")[0]) * this.state.count)} грн.
+              {(Number(price.split(" ")[0]) * this.state.count).toFixed(2)} грн.
             </p>
           </div>
         </div>
@@ -123,6 +118,14 @@ class CheckoutCard extends React.PureComponent {
             </div>
           ) : null}
         </div>
+        <div
+          onClick={() => {
+            deleteInbuy(this.state.product);
+          }}
+          className={styles.productCard_cross}
+        >
+          <img src={svg} alt="cross" />
+        </div>
       </div>
     );
   }
@@ -134,7 +137,8 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
+    changeInbuy: (product, ammount) => dispatch(changeInbuy(product, ammount)),
+    deleteInbuy: (product) => dispatch(deleteInbuy(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutCard);

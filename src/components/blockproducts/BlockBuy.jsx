@@ -4,7 +4,7 @@ export default class BlockBuy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      price: this.renderPrice(this.props.whantToBuy),
+      price: 0,
     };
   }
   renderPrice = (product) => {
@@ -12,9 +12,12 @@ export default class BlockBuy extends Component {
     product.forEach((e) => {
       let increment = e.ammount;
       let price = Number(e.product.price.split(" ")[0]);
-      AllPrice += Math.ceil(increment * price);
+      AllPrice += increment * price;
     });
-    return AllPrice;
+    return AllPrice.toFixed(2);
+  };
+  componentDidMount = () => {
+    this.setState({ price: this.renderPrice(this.props.whantToBuy) });
   };
   componentDidUpdate = (prevProps) => {
     if (this.state.price !== this.renderPrice(this.props.whantToBuy)) {

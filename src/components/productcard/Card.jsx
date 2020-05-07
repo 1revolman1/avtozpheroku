@@ -32,6 +32,10 @@ class Card extends React.PureComponent {
   componentDidMount = (e) => {
     this.setState({ product: this.props.data });
   };
+  componentDidUpdate = (e) => {
+    if (this.state.product.code[0] !== this.props.data.code[0])
+      this.setState({ product: this.props.data });
+  };
   render() {
     const {
       proizvod,
@@ -101,7 +105,7 @@ class Card extends React.PureComponent {
             </div>
             <div
               onClick={() => {
-                setInbuy(this.state.product, this.state.count);
+                setInbuy(this.props.data, this.state.count);
               }}
               className={styles.productCard_priceList_buttons_toCart}
             >
