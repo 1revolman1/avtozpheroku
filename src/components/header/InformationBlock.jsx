@@ -116,6 +116,16 @@ const StyledLinkAuth = styled(Link)`
     background-image: url(${userlogo});
   }
 `;
+const StyledLinkLogo = styled(Link)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+const StyledLogo = styled(Link)`
+  position: relative;
+`;
 export default class InformationBlock extends Component {
   render() {
     const { phones } = this.props;
@@ -123,9 +133,10 @@ export default class InformationBlock extends Component {
       <WrapperInformationContainerDiv>
         <WrapperBlockDiv wg="80%" pg="18px 0">
           <BlockAtMainHeader fl="1">
-            <div>
+            <StyledLogo>
+              <StyledLinkLogo to="/"></StyledLinkLogo>
               <StyledImg src={logo} alt="logo"></StyledImg>
-            </div>
+            </StyledLogo>
           </BlockAtMainHeader>
           <BlockAtMainHeader fl="2" pd="0 0 0 45px">
             <StyleInfromationBlock>

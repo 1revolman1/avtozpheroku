@@ -4,9 +4,10 @@ import styles from "./CheckoutCard.module.scss";
 import cartStyle from "./counter/Counter.module.scss";
 import { connect } from "react-redux";
 import {
-  setInfavourite,
-  deleteInfavourite,
+  // setInfavourite,
+  // deleteInfavourite,
   setInbuy,
+  // changeAmmountInbuy,
 } from "../../actions/CartAction";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -37,13 +38,7 @@ class CheckoutCard extends React.PureComponent {
       hotprice,
       buyerslike,
     } = this.props.product.product;
-    // const{
-    //   setInfavourite,
-    //   deleteInfavourite,
-    //   setInbuy,
-    // } = this.props;
-    const { product } = this.props;
-    console.log(product);
+    const { setInbuy } = this.props;
     return (
       <div className={styles.productCard}>
         <div className={styles.productCard_imagebl}>
@@ -55,11 +50,7 @@ class CheckoutCard extends React.PureComponent {
             <h2>{text}</h2>
           </div>
           <div className={styles.productCard_block_priceList}>
-            <div
-              className={
-                styles.productCard_block_priceList_withSelector_buttons
-              }
-            >
+            <div className={styles.productCard_block_priceList_withSelector}>
               <p>{price}</p>
               <div
                 className={
@@ -71,9 +62,10 @@ class CheckoutCard extends React.PureComponent {
                   <div className={cartStyle.cardCounter_button}>
                     <button
                       pos="inc"
-                      onClick={() =>
-                        this.setState({ count: this.state.count + 1 })
-                      }
+                      onClick={async () => {
+                        await this.setState({ count: this.state.count + 1 });
+                        await setInbuy(this.state.product, this.state.count);
+                      }}
                     >
                       <svg
                         height="20"
@@ -90,9 +82,11 @@ class CheckoutCard extends React.PureComponent {
                     </button>
                     <button
                       pos="dec"
-                      onClick={() => {
-                        if (this.state.count > 1)
-                          return this.setState({ count: this.state.count - 1 });
+                      onClick={async () => {
+                        if (this.state.count > 1) {
+                          await this.setState({ count: this.state.count - 1 });
+                          await setInbuy(this.state.product, this.state.count);
+                        }
                       }}
                     >
                       <svg
@@ -112,9 +106,9 @@ class CheckoutCard extends React.PureComponent {
                 </div>
               </div>
             </div>
-            <div className={styles.productCard_block_priceList_witoutSelector}>
-              <p>{Number(price.split(" ")[0]) * this.state.count} грн.</p>
-            </div>
+            <p className={styles.productCard_block_priceList_witoutSelector}>
+              {Math.ceil(Number(price.split(" ")[0]) * this.state.count)} грн.
+            </p>
           </div>
         </div>
         <div className={styles.productCard_categories}>
@@ -140,9 +134,7 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    setInfavourite: (product) => dispatch(setInfavourite(product)),
     setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
-    deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutCard);

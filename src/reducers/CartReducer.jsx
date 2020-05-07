@@ -2,7 +2,6 @@ import {
   SET_CART_INFAVOURITE,
   SET_CART_BUY,
   DELETE_CART_INFAVOURITE,
-  DELETE_CART_INBUY,
 } from "../actions/CartAction";
 const initialState = {
   favourite: [],
@@ -23,7 +22,9 @@ export function cartReducer(state = initialState, action) {
       return {
         ...state,
         whantToBuy: [
-          ...state.whantToBuy,
+          ...state.whantToBuy.filter(function (item) {
+            return !item["product"].code[0].includes(action.payload[0].code[0]);
+          }),
           { product: action.payload[0], ammount: action.payload[1] },
         ],
       };

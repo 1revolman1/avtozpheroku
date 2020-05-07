@@ -26,11 +26,3 @@ export function setInbuy(product, ammount) {
     });
   };
 }
-// export function deleteInbuy(product) {
-//   return (dispatch) => {
-//     dispatch({
-//       type: DELETE_CART_INFAVOURITE,
-//       payload: product,
-//     });
-//   };
-// }
