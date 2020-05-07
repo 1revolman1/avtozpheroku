@@ -14,6 +14,7 @@ export default class CheckoutProducts extends Component {
     });
     return listGoods;
   };
+
   render() {
     const { whantToBuy } = this.props;
     return (
@@ -23,6 +24,7 @@ export default class CheckoutProducts extends Component {
         ) : (
           <LoadingDiv>Вы не выбрали товары!</LoadingDiv>
         )}
+        <div></div>
       </React.Fragment>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import BlockCheckout from "../components/blockcomponent/BlockCheckout";
+import BlockAllBuy from "../containers/BlockAllBuy";
 import styles from "./Bought.module.scss";
 export default function Favourite() {
   return (
@@ -8,6 +9,7 @@ export default function Favourite() {
         <h1 className={styles.head_text}>Вам нравится: </h1>
       </div>
       <BlockCheckout />
+      <BlockAllBuy />
     </React.Fragment>
   );
 }

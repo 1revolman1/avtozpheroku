@@ -1,0 +1,40 @@
+.blockBuy {
+  width: 80%;
+  margin: 0 auto;
+  h3 {
+    text-align: end;
+
+    font-family: "Rubik", sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+  }
+  &_form {
+    margin: 14px 0;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    padding: 14px 0;
+    border-radius: 6px;
+    background-color: #58a94b;
+    span {
+      font-family: "Rubik", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1px;
+      text-align: center;
+      color: #ffffff;
+    }
+    &:active {
+      background-color: #4e9244;
+    }
+  }
+}
