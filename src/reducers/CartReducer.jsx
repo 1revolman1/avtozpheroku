@@ -24,13 +24,6 @@ export function cartReducer(state = initialState, action) {
       return {
         ...state,
         whantToBuy: [
-          // ...state.whantToBuy.map(function (item, index, array) {
-          //   if (item["product".code[1].includes(action.payload[0].code[1])]) {
-          //     return action.payload[0];
-          //   } else {
-          //     return item;
-          //   }
-          // }),
           ...state.whantToBuy.filter(function (item) {
             return !item["product"].code[1].includes(action.payload[0].code[1]);
           }),
@@ -40,33 +33,16 @@ export function cartReducer(state = initialState, action) {
     case CHANGE_INCART_AMMOUNT:
       return {
         ...state,
-        whantToBuy:
-          // action.payload,
-          state.whantToBuy.map(function (item, index, array) {
-            if (item["product"].code[1].includes(action.payload[0].code[1])) {
-              return {
-                product: action.payload[0],
-                ammount: action.payload[1],
-              };
-            } else {
-              return item;
-            }
-          }),
-        // [
-        //   ...state.whantToBuy,
-        //   // ...state.whantToBuy.filter(function (item) {
-        //   //   return !item["product"].code[1].includes(action.payload[0].code[1]);
-        //   // }),
-        //   // { product: action.payload[0], ammount: action.payload[1] },
-        //   // ...state.whantToBuy.map(function (item, index, array) {
-        //   //   if (item["product"].code[1].includes(action.payload[0].code[1])) {
-        //   //     return action.payload[0];
-        //   //   } else {
-        //   //     return item;
-        //   //   }
-        //   // }),
-        //   { product: action.payload[0], ammount: action.payload[1] },
-        // ],
+        whantToBuy: state.whantToBuy.map(function (item, index, array) {
+          if (item["product"].code[1].includes(action.payload[0].code[1])) {
+            return {
+              product: action.payload[0],
+              ammount: action.payload[1],
+            };
+          } else {
+            return item;
+          }
+        }),
       };
     case DELETE_CART_INBUY:
       return {

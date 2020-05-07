@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import styles from "./Products.module.scss";
-import CheckoutCard from "../productcard/CheckoutCard";
+import FavouriteCard from "../productcard/FavouriteCard";
 
 const LoadingDiv = styled.div`
   margin: 0 auto;
 `;
 
-export default class CheckoutProducts extends Component {
+export default class FavouriteProducts extends Component {
   renderCard = (products) => {
     const listGoods = products.map((data, index) => {
       return (
-        <CheckoutCard
+        <FavouriteCard
           product={data}
           key={index}
-          changeInbuy={this.props.changeInbuy}
-          deleteInbuy={this.props.deleteInbuy}
+          setInbuy={this.props.setInbuy}
+          deleteInfavourite={this.props.deleteInfavourite}
         />
       );
     });
@@ -23,15 +22,14 @@ export default class CheckoutProducts extends Component {
   };
 
   render() {
-    const { whantToBuy } = this.props;
+    const { favourite } = this.props;
     return (
       <React.Fragment>
-        {whantToBuy.length > 0 ? (
-          this.renderCard(whantToBuy)
+        {favourite.length > 0 ? (
+          this.renderCard(favourite)
         ) : (
           <LoadingDiv>Вы не выбрали товары!</LoadingDiv>
         )}
-        <div></div>
       </React.Fragment>
     );
   }

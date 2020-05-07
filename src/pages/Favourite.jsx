@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import BlockCheckout from "../components/blockcomponent/BlockCheckout";
-
+import styles from "./Bought.module.scss";
+import BlockFavourite from "../components/blockcomponent/BlockFavourite";
 export default function Favourite() {
   return (
     <React.Fragment>
-      <h1>Вам нравится: </h1>
-      <Link to="/">кликни</Link>
-      <BlockCheckout />
+      <div className={styles.head}>
+        <h1 className={styles.head_text}>В избранном: </h1>
+      </div>
+      <BlockFavourite />
     </React.Fragment>
   );
 }

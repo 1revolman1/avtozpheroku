@@ -2,19 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 
 import CheckoutProducts from "../components/blockproducts/CheckoutProducts";
-import {
-  setInfavourite,
-  deleteInfavourite,
-  setInbuy,
-} from "../actions/CartAction";
+import { changeInbuy, deleteInbuy } from "../actions/CartAction";
 
 class ProductsCheckout extends React.Component {
   render() {
-    const { cart } = this.props;
+    const { cart, changeInbuy, deleteInbuy } = this.props;
     return (
       <CheckoutProducts
         whantToBuy={cart.whantToBuy}
-        // getGoods={getGoods}
+        changeInbuy={changeInbuy}
+        deleteInbuy={deleteInbuy}
       />
     );
   }
@@ -26,9 +23,8 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    setInfavourite: (product) => dispatch(setInfavourite(product)),
-    setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
-    deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
+    changeInbuy: (product, ammount) => dispatch(changeInbuy(product, ammount)),
+    deleteInbuy: (product) => dispatch(deleteInbuy(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsCheckout);

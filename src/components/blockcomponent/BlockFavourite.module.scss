@@ -1,0 +1,12 @@
+.blockFavourite {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1440px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+  }
+}

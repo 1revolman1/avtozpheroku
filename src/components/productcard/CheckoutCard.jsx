@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./CheckoutCard.module.scss";
 import cartStyle from "./counter/Counter.module.scss";
-import { connect } from "react-redux";
-import { changeInbuy, deleteInbuy } from "../../actions/CartAction";
 import svg from "./interface.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-class CheckoutCard extends React.PureComponent {
+
+export default class CheckoutCard extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,15 +129,3 @@ class CheckoutCard extends React.PureComponent {
     );
   }
 }
-const mapStateToProps = (store) => {
-  return {
-    cart: store.cart,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeInbuy: (product, ammount) => dispatch(changeInbuy(product, ammount)),
-    deleteInbuy: (product) => dispatch(deleteInbuy(product)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutCard);
