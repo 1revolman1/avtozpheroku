@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import styles from "./Products.module.scss";
 import CheckoutCard from "../productcard/CheckoutCard";
 
 const LoadingDiv = styled.div`

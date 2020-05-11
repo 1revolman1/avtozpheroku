@@ -4,13 +4,17 @@ import { connect } from "react-redux";
 import Products from "../components/blockproducts/Products";
 import { getGoods } from "../actions/BlockComponentActions";
 import {
+  setInfavouriteInit,
   setInfavourite,
   deleteInfavourite,
   setInbuy,
 } from "../actions/CartAction";
 class ProductsContainer extends React.Component {
   componentDidMount = () => {
-    localStorage.setItem("favourite", JSON.stringify([]));
+    if (!JSON.parse(localStorage.getItem("favourite"))) {
+      localStorage.setItem("favourite", JSON.stringify([]));
+    }
+    this.props.setInfavouriteInit("favourite");
   };
   render() {
     const {
@@ -46,6 +50,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getGoods: () => dispatch(getGoods()),
     setInfavourite: (product) => dispatch(setInfavourite(product)),
+    setInfavouriteInit: (name) => dispatch(setInfavouriteInit(name)),
     setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
     deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
   };

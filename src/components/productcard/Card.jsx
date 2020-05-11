@@ -24,10 +24,16 @@ export default class Card extends React.PureComponent {
 
   componentDidMount = (e) => {
     this.setState({ product: this.props.data });
+    if (this.props.inFavouriteInit) {
+      this.setState({ inFavourite: this.props.inFavouriteInit });
+    }
   };
   componentDidUpdate = (e) => {
     if (this.state.product.code[0] !== this.props.data.code[0])
       this.setState({ product: this.props.data });
+    if (this.state.inFavourite !== this.props.inFavouriteInit) {
+      this.setState({ inFavourite: this.props.inFavouriteInit });
+    }
   };
   render() {
     const {
@@ -112,29 +118,8 @@ export default class Card extends React.PureComponent {
             this.setState({ inFavourite: !this.state.inFavourite }, () => {
               if (this.state.inFavourite) {
                 setInfavourite(this.state.product);
-                // localStorage.setItem(
-                //   "favourite",
-                //   JSON.stringify([
-                //     ...JSON.parse(localStorage.getItem("favourite")),
-                //     this.state.product,
-                //   ])
-                // );
-                // console.log(JSON.parse(localStorage.getItem("favourite")));
               } else {
                 deleteInfavourite(this.state.product);
-                // localStorage.setItem(
-                //   "favourite",
-                //   JSON.stringify(
-                //     JSON.parse(localStorage.getItem("favourite")).filter(
-                //       (item) => {
-                //         return !item.code[1].includes(
-                //           this.state.product.code[1]
-                //         );
-                //       }
-                //     )
-                //   )
-                // );
-                // console.log(JSON.parse(localStorage.getItem("favourite")));
               }
             });
           }}

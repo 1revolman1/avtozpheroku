@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import styles from "./TextImg.module.scss";
 
 export default class TextImg extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className={styles.blockTextImg}>
@@ -14,9 +11,6 @@ export default class TextImg extends Component {
             Двигатель авто нуждается в постоянном уходе. Обеспечить его
             безотказную и долговечную работу, а также повысить
             производительность помогает правильно подобранное моторное масло.
-            Если вы ищете интернет-магазин моторных масел, «Автоопора»
-            предлагает широкий ассортимент автомасел для различных моделей
-            современных автомобилей.
           </p>
           <h2>Виды и особенности</h2>
           <p>
@@ -40,7 +34,7 @@ export default class TextImg extends Component {
             производятся напрямую от изготовителей, что дает нашим клиентам
             возможность покупать оптом по низкой цене товары известных
             производителей.
-          </p>{" "}
+          </p>
         </div>
         <div className={styles.blockTextImg__img}>
           <img

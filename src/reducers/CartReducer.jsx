@@ -1,5 +1,6 @@
 import {
   SET_CART_INFAVOURITE,
+  SET_CART_INFAVOURITE_INIT,
   SET_CART_BUY,
   DELETE_CART_INFAVOURITE,
   DELETE_CART_INBUY,
@@ -11,15 +12,35 @@ const initialState = {
 };
 export function cartReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_CART_INFAVOURITE:
+    case SET_CART_INFAVOURITE_INIT: {
+      return {
+        ...state,
+        favourite: JSON.parse(localStorage.getItem(action.payload)),
+      };
+    }
+    case SET_CART_INFAVOURITE: {
+      localStorage.setItem(
+        "favourite",
+        JSON.stringify([...state.favourite, action.payload])
+      );
       return { ...state, favourite: [...state.favourite, action.payload] };
-    case DELETE_CART_INFAVOURITE:
+    }
+    case DELETE_CART_INFAVOURITE: {
+      localStorage.setItem(
+        "favourite",
+        JSON.stringify(
+          state.favourite.filter((item) => {
+            return !item.code[1].includes(action.payload.code[1]);
+          })
+        )
+      );
       return {
         ...state,
         favourite: state.favourite.filter(function (item) {
           return !item.code[1].includes(action.payload.code[1]);
         }),
       };
+    }
     case SET_CART_BUY:
       return {
         ...state,

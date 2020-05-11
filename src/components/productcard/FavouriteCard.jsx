@@ -8,7 +8,7 @@ import cartStyle from "./counter/Counter.module.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BlockFavourite = styled.div`
-  background: ${(props) => (props.active ? "#35889a" : "#d9d9d9")};
+  background: ${(props) => (props.active ? "#35889aa1" : "#d9d9d9")};
 `;
 
 export default class FavouriteCard extends React.PureComponent {

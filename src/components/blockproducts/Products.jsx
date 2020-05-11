@@ -23,7 +23,6 @@ export default class Products extends Component {
   };
   componentDidMount = (e) => {
     if (this.props.products.length === 0) this.props.getGoods();
-    localStorage.favourite = null;
   };
   renderCard = (products, index = 0) => {
     if (products.length) {
@@ -41,6 +40,13 @@ export default class Products extends Component {
           return (
             <Card
               data={data}
+              inFavouriteInit={
+                JSON.parse(localStorage.getItem("favourite")).find((item) => {
+                  return item.code[1].includes(data.code[1]);
+                })
+                  ? true
+                  : false
+              }
               view={this.props.view}
               key={index}
               setInfavourite={this.props.setInfavourite}

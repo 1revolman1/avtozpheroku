@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import style from "./Footer.module.scss";
+import logo from "../../assets/header/logo.png";
 export default class Footer extends Component {
   render() {
     return (
       <footer className={style.blockFooter}>
         <div className={style.blockFooter_wrapper}>
           <div className={style.blockFooter_wrapper_bl}>
-            <img
-              alt="logo"
-              src="https://shop.autoopora.com/catalog/view/theme/default/stylesheet/img/logo-footer.png"
-            />
+            <img alt="logo" src={logo} />
           </div>
           <div className={style.blockFooter_wrapper_bl}>
             <h2>Автоопора</h2>
@@ -42,7 +39,7 @@ export default class Footer extends Component {
                 Работаем в будние дни с 08:00 – 19:00, в субботу и воскресенье
                 с 09:00 – 16:00
               </li>
-              <li>г. Запорожье, ул. Седова, 7</li>
+              <li>г. Запорожье, ул. Мочанова, 3</li>
             </ul>
           </div>
         </div>
