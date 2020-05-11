@@ -77,7 +77,7 @@ const StyledSpan = styled.span`
   top: 10%;
   left: -5px;
   padding: 1px;
-  background: #58a94b;
+  background: #18778c;
   /* background: rgba(88, 169, 75, 0.3); */
   border-radius: 50%;
   @media screen and (max-width: 1280px) {

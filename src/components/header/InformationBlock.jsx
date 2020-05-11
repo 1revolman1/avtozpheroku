@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../assets/header/logo.svg";
-import userlogo from "../../assets/header/icon-core-user.png";
-import phonelogo from "../../assets/header/icon-communication-phone-call.png";
+import logo from "../../assets/header/logo.png";
+import userlogo from "../../assets/header/user.svg";
+import phonelogo from "../../assets/header/communications.svg";
 const WrapperInformationContainerDiv = styled.div`
   display: flex;
   width: 100%;
@@ -89,8 +89,8 @@ const StyleInfromationBlock = styled.div`
     font-style: normal;
     line-height: normal;
     letter-spacing: 1px;
-    color: #58a94b;
-    border-bottom: 1px dashed #58a94b;
+    color: #35889a;
+    border-bottom: 1px dashed #35889a;
   }
 `;
 const StyledLinkAuth = styled(Link)`
@@ -104,8 +104,8 @@ const StyledLinkAuth = styled(Link)`
   font-style: normal;
   line-height: normal;
   text-align: right;
-  color: #58a94b;
-  border-bottom: 1px dashed #58a94b;
+  color: #35889a;
+  border-bottom: 1px dashed #35889a;
   &::after {
     position: absolute;
     top: 0;

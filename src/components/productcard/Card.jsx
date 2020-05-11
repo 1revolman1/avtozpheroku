@@ -5,20 +5,13 @@ import cart from "../../assets/supermarket.svg";
 import star from "../../assets/star.svg";
 import cartStyle from "./counter/Counter.module.scss";
 
-import { connect } from "react-redux";
-import {
-  setInfavourite,
-  deleteInfavourite,
-  setInbuy,
-} from "../../actions/CartAction";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BlockFavourite = styled.div`
-  background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
+  background: ${(props) => (props.active ? "#35889aa1" : "#d9d9d9")};
 `;
 
-class Card extends React.PureComponent {
+export default class Card extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,8 +112,29 @@ class Card extends React.PureComponent {
             this.setState({ inFavourite: !this.state.inFavourite }, () => {
               if (this.state.inFavourite) {
                 setInfavourite(this.state.product);
+                // localStorage.setItem(
+                //   "favourite",
+                //   JSON.stringify([
+                //     ...JSON.parse(localStorage.getItem("favourite")),
+                //     this.state.product,
+                //   ])
+                // );
+                // console.log(JSON.parse(localStorage.getItem("favourite")));
               } else {
                 deleteInfavourite(this.state.product);
+                // localStorage.setItem(
+                //   "favourite",
+                //   JSON.stringify(
+                //     JSON.parse(localStorage.getItem("favourite")).filter(
+                //       (item) => {
+                //         return !item.code[1].includes(
+                //           this.state.product.code[1]
+                //         );
+                //       }
+                //     )
+                //   )
+                // );
+                // console.log(JSON.parse(localStorage.getItem("favourite")));
               }
             });
           }}
@@ -145,16 +159,3 @@ class Card extends React.PureComponent {
     );
   }
 }
-const mapStateToProps = (store) => {
-  return {
-    cart: store.cart,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setInfavourite: (product) => dispatch(setInfavourite(product)),
-    setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
-    deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Card);

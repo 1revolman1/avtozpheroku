@@ -23,6 +23,7 @@ export default class Products extends Component {
   };
   componentDidMount = (e) => {
     if (this.props.products.length === 0) this.props.getGoods();
+    localStorage.favourite = null;
   };
   renderCard = (products, index = 0) => {
     if (products.length) {
@@ -36,7 +37,17 @@ export default class Products extends Component {
       const listGoods = newData[index].map((data, index) => {
         if (data.text === "none") {
           return <div>Нет товаров в данной категории!</div>;
-        } else return <Card data={data} view={this.props.view} key={index} />;
+        } else
+          return (
+            <Card
+              data={data}
+              view={this.props.view}
+              key={index}
+              setInfavourite={this.props.setInfavourite}
+              deleteInfavourite={this.props.deleteInfavourite}
+              setInbuy={this.props.setInbuy}
+            />
+          );
       });
       return listGoods;
     }

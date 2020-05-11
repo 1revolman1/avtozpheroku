@@ -54,7 +54,7 @@ export default () => {
       <WrapperInformationContainerDiv
         className={`sticky-wrapper${isSticky ? " sticky" : ""}`}
         ref={ref}
-        bg="#58a94b"
+        bg="#35889a"
       >
         <BlockWithMenu />
       </WrapperInformationContainerDiv>

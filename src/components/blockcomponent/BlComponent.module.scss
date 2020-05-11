@@ -77,14 +77,14 @@
               margin: 1px;
               width: 7px;
               height: 7px;
-              border: solid 2px #616161;
+              border: solid 2px #18778c;
             }
-            &:hover {
-              background-color: rgba(88, 169, 75, 0.3);
-              span {
-                border: solid 2px #58a94b;
-              }
-            }
+            // &:hover {
+            //   background-color: rgba(88, 169, 75, 0.3);
+            //   span {
+            //     border: solid 2px #18778c;
+            //   }
+            // }
             @media screen and (max-width: 480px) {
               margin-top: 10px;
               margin-bottom: 10px;

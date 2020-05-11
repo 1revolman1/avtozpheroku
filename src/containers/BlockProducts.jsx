@@ -3,10 +3,24 @@ import { connect } from "react-redux";
 
 import Products from "../components/blockproducts/Products";
 import { getGoods } from "../actions/BlockComponentActions";
-
+import {
+  setInfavourite,
+  deleteInfavourite,
+  setInbuy,
+} from "../actions/CartAction";
 class ProductsContainer extends React.Component {
+  componentDidMount = () => {
+    localStorage.setItem("favourite", JSON.stringify([]));
+  };
   render() {
-    const { goods, getGoods, view } = this.props;
+    const {
+      goods,
+      getGoods,
+      view,
+      setInfavourite,
+      deleteInfavourite,
+      setInbuy,
+    } = this.props;
     return (
       <Products
         view={view}
@@ -14,6 +28,9 @@ class ProductsContainer extends React.Component {
         isFetching={goods.isFetching}
         pageToShow={goods.pageToShow}
         getGoods={getGoods}
+        setInfavourite={setInfavourite}
+        deleteInfavourite={deleteInfavourite}
+        setInbuy={setInbuy}
       />
     );
   }
@@ -22,11 +39,15 @@ const mapStateToProps = (store) => {
   return {
     goods: store.goods,
     view: store.view.view,
+    cart: store.cart,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getGoods: () => dispatch(getGoods()),
+    setInfavourite: (product) => dispatch(setInfavourite(product)),
+    setInbuy: (product, ammount) => dispatch(setInbuy(product, ammount)),
+    deleteInfavourite: (product) => dispatch(deleteInfavourite(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

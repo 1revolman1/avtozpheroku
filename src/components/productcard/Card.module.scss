@@ -29,7 +29,7 @@
       font-style: normal;
       line-height: normal;
       letter-spacing: 0.83px;
-      color: #58a94b;
+      color: #35889a;
     }
     h2 {
       font-family: "Rubik", sans-serif;
@@ -105,7 +105,7 @@
         position: relative;
         border-radius: 6px;
         transition: all 0.3s ease 0s;
-        background-color: #58a94b;
+        background-color: #35889a;
         padding: 14px 47px 14px 18px;
         margin: 5px 0;
         p {
@@ -128,7 +128,7 @@
           width: 22px;
         }
         &:hover {
-          background-color: #478c3c;
+          background-color: #18778c;
           -webkit-transition: all 0.3s ease 0s;
         }
       }
@@ -184,7 +184,7 @@
     }
   }
   &:hover {
-    border: 2px solid #58a94b;
+    border: 2px solid #35889a;
     box-shadow: 0 5px 15px 0 rgba(50, 50, 50, 0.63);
   }
   @media screen and (max-width: 768px) {

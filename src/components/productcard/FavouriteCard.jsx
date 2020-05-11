@@ -5,17 +5,10 @@ import cart from "../../assets/supermarket.svg";
 import star from "../../assets/star.svg";
 import cartStyle from "./counter/Counter.module.scss";
 
-import { connect } from "react-redux";
-import {
-  setInfavourite,
-  deleteInfavourite,
-  setInbuy,
-} from "../../actions/CartAction";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BlockFavourite = styled.div`
-  background: ${(props) => (props.active ? "#cce5c9" : "#d9d9d9")};
+  background: ${(props) => (props.active ? "#35889a" : "#d9d9d9")};
 `;
 
 export default class FavouriteCard extends React.PureComponent {

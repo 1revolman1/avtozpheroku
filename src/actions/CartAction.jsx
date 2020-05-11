@@ -3,6 +3,7 @@ export const DELETE_CART_INFAVOURITE = "DELETE_CART_INFAVOURITE";
 export const CHANGE_INCART_AMMOUNT = "CHANGE_INCART_AMMOUNT";
 export const SET_CART_BUY = "SET_CART_BUY";
 export const DELETE_CART_INBUY = "DELETE_CART_INBUY";
+
 export function setInfavourite(product) {
   return (dispatch) => {
     dispatch({

@@ -26,7 +26,7 @@ const StyledPagination = styled(Pagination)`
         border: solid 1px #f9f9f9;
       }
       & .Mui-selected {
-        background-color: #58a94b;
+        background-color: #18778c;
         color: white;
       }
       & button {
@@ -43,20 +43,18 @@ const StyledPagination = styled(Pagination)`
   }
 `;
 const StyledButtonViewBlock = styled.div`
-  background: ${(props) =>
-    props.view === "block" ? "rgba(88, 169, 75, 0.3)" : "#d9d9d9"};
+  background: ${(props) => (props.view === "block" ? "#35889aa1" : "#d9d9d9")};
   span {
     border: ${(props) =>
-      props.view === "block" ? "solid 2px #58a94b" : "solid 2px #616161"};
+      props.view === "block" ? "solid 2px #18778c" : "solid 2px #616161"};
   }
 `;
 const StyledButtonViewLine = styled.div`
-  background: ${(props) =>
-    props.view === "line" ? "rgba(88, 169, 75, 0.3)" : "#d9d9d9"};
+  background: ${(props) => (props.view === "line" ? "#35889aa1" : "#d9d9d9")};
   span,
   span::before,
   span::after {
-    background: ${(props) => (props.view === "line" ? " #58a94b" : "#616161")};
+    background: ${(props) => (props.view === "line" ? "#18778c" : "#616161")};
   }
 `;
 class BlComponent extends Component {
