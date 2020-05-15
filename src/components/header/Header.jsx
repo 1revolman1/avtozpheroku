@@ -16,6 +16,7 @@ export default () => {
   const [isSticky, setSticky] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
+    //block of header-animation effect
     const header = ref.current;
     const sticky = header.offsetTop;
     const scrollCallBack = window.addEventListener("scroll", () => {
@@ -34,20 +35,20 @@ export default () => {
       <WrapperInformationContainerDiv border>
         <NavLink
           linkes={[
-            { title: "О компании", to: "/about" },
-            { title: "Гарантия и возврат", to: "/garanties" },
-            { title: "Оплата", to: "/checkout" },
-            { title: "Доставка", to: "/delivery" },
-            { title: "Вопросы и ответы", to: "/faq" },
+            { title: "About", to: "/about" },
+            { title: "Warranty & Returns", to: "/warranty" },
+            { title: "Payment", to: "/payment" },
+            { title: "Delivery", to: "/delivery" },
+            { title: "FAQ", to: "/faq" },
           ]}
         />
       </WrapperInformationContainerDiv>
       <WrapperInformationContainerDiv>
         <InfromationBlock
           phones={[
-            { phone: "(061) 701 10 03" },
-            { phone: "(095) 232 36 13" },
-            { phone: "(095) 232 36 13" },
+            { phone: "+1(061) 701 10 03" },
+            { phone: "+1(095) 232 36 13" },
+            { phone: "+1(095) 232 36 13" },
           ]}
         />
       </WrapperInformationContainerDiv>

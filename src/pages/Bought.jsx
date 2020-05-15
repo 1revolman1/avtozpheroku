@@ -6,7 +6,7 @@ export default function Favourite() {
   return (
     <React.Fragment>
       <div className={styles.head}>
-        <h1 className={styles.head_text}>В корзине: </h1>
+        <h1 className={styles.head_text}>In the cart: </h1>
       </div>
       <BlockCheckout />
       <BlockAllBuy />

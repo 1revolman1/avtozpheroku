@@ -6,34 +6,32 @@ export default class TextImg extends Component {
     return (
       <div className={styles.blockTextImg}>
         <div className={styles.blockTextImg__text}>
-          <h2>Моторные масла</h2>
+          <h2>Motor oils</h2>
           <p>
-            Двигатель авто нуждается в постоянном уходе. Обеспечить его
-            безотказную и долговечную работу, а также повысить
-            производительность помогает правильно подобранное моторное масло.
+            The car engine needs constant care. Properly selected motor oil
+            helps ensure its trouble-free and long-lasting operation, as well as
+            increase productivity.
           </p>
-          <h2>Виды и особенности</h2>
+          <h2>Types and Features</h2>
           <p>
-            Прежде чем купить моторные масла для автомобиля, необходимо
-            определиться с подходящим видом. В каталоге представлены автомасла:
-            HC-синтетические — разрабатываются с применением гидрокрекинговой
-            технологии, имеют высокие показатели вязкости и стойкости к
-            процессам окисления; минеральные — отличаются повышенной вязкостью,
-            но имеют низкий температурный диапазон работы, подходят для
-            агрегатов с пробегом, цена на автомасло для авто этой разновидности
-            ниже, чем на аналоги с «синтетикой»; полусинтетические — обладают
-            улучшенными эксплуатационными свойствами, чем минеральные аналоги,
-            при этом сто́ят дешевле «синтетики»; синтетические — характеризуются
-            хорошей текучестью, могут работать в широких температурных
-            диапазонах, имеют долгий срок службы; промывочные — используются для
-            эффективного очищения мотора от шлака и отложений. Решив купить
-            автомасла в интернет-магазине, не забудьте учесть такой важный
-            параметр, как вязкость. От нее зависит легкий пуск и надежная смазка
-            всех узлов двигателя. В ассортименте продукция ведущих брендов:
-            Mannol, Castrol, Mobil, Motul, ZIC, Shell и других. Поставки
-            производятся напрямую от изготовителей, что дает нашим клиентам
-            возможность покупать оптом по низкой цене товары известных
-            производителей.
+            Before you buy engine oils for a car, you must determine the
+            appropriate view. The catalog contains motor oils: HC-synthetic -
+            developed using hydrocracking technology, have high viscosity and
+            resistance to oxidation processes; mineral - characterized by
+            increased viscosity, but have a low temperature range of operation,
+            suitable for used units, the price of a car oil for a car of this
+            variety lower than analogues with “synthetics”; semi-synthetic -
+            possess improved performance than mineral analogues, at the same
+            time they are cheaper than “synthetics”; synthetic - characterized
+            good fluidity, can work in wide temperature ranges, have a long
+            service life; flushing - used for effective cleaning of the motor
+            from slag and deposits. Deciding to buy car oils in the online
+            store, do not forget to consider such an important parameter like
+            viscosity. Easy start-up and reliable lubrication depend on it. all
+            engine components. The assortment of products of leading brands:
+            Mannol, Castrol, Mobil, Motul, ZIC, Shell and others. Supplies are
+            made directly from manufacturers, which gives our customers the
+            ability to buy goods at a low price in bulk manufacturers.
           </p>
         </div>
         <div className={styles.blockTextImg__img}>

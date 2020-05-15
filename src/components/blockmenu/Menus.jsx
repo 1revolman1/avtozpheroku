@@ -16,9 +16,9 @@ export default class Menus extends Component {
       menuCategories
     ) {
       let associating = {
-        Бренд: "proizvod",
-        Тип: "text",
-        Вязкость: "text",
+        Brend: "proizvod",
+        Type: "text",
+        Viscosity: "text",
       };
       if (Object.values(menu)[index] && Object.values(menu)[index].length > 0) {
         let bufferedArray = [];
@@ -72,11 +72,7 @@ export default class Menus extends Component {
 
     return (
       <div className={styles.menueSetting}>
-        {!isFetching ? (
-          this.renderDropDown(menues)
-        ) : (
-          <div>Загружаю меню...</div>
-        )}
+        {!isFetching ? this.renderDropDown(menues) : <div>Downloading...</div>}
       </div>
     );
   }

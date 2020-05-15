@@ -53,11 +53,11 @@ export default class extends Component {
         onChange={this.handleChange}
         className={styles.productContainer_header_settings_setting_menu}
       >
-        <option value="default">По умолчанию</option>
-        <option value="popular">Самые популярные</option>
-        <option value="sales">Лучшие скидки!</option>
-        <option value="priceSm">Сортировать по цене(убывание)</option>
-        <option value="priceBg">Сортировать по цене(возрастание)</option>
+        <option value="default">Default</option>
+        <option value="popular">Popular</option>
+        <option value="sales">Best sale!</option>
+        <option value="priceSm">Sort by price (decrease)</option>
+        <option value="priceBg">Sort by price (increase)</option>
       </select>
     );
   }

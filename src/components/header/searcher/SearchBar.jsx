@@ -57,7 +57,7 @@ export default class SearchBar extends Component {
       <SearchBarDiv wg={wg}>
         <input
           type="text"
-          placeholder="Поиск по названию, коду товара, каталожному номеру, марке автомобиля…"
+          placeholder="Search by name, product code, catalog number, car make"
         />
         <img src={mangnifire} alt="" />
       </SearchBarDiv>

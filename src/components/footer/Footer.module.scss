@@ -37,6 +37,16 @@
           color: #ffffff;
         }
       }
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+      &:first-of-type {
+        order: 1;
+        @media screen and (max-width: 768px) {
+          order: 0;
+        }
+      }
       @media screen and (max-width: 768px) {
         flex: none;
         width: 100%;

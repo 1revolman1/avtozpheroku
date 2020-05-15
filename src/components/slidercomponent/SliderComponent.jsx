@@ -53,25 +53,23 @@ export default class SliderComponent extends Component {
     let array = [
       {
         img: "https://shop.autoopora.com/fotos/cache/4141055Z_1-238x238.jpg",
-        text: "Блок управления электростеклоподъемником Ланос, Сенс 2 клав GM",
-        price: "12 981.32 грн.",
+        text: "Power window control unit Lanos, Sens 2 clav GM",
+        price: "12 981.32 $",
       },
       {
         img: "https://shop.autoopora.com/fotos/cache/411411Z_1-238x238.jpg",
-        text: "Амортизатор Авео AT задний газомасляный (стойка)",
-        price: "812.42 грн.",
+        text: "Aveo AT rear gas oil shock absorber (strut)",
+        price: "812.42 $",
       },
       {
         img: "https://shop.autoopora.com/fotos/cache/0741002Z_1-238x238.jpg",
-        text:
-          "Вал распределительный Таврия, 1102, 1103, 1105 Авто (распредвал)",
-        price: "812.42 грн.",
+        text: "Camshaft Tavria, 1102, 1103, 1105 Auto (camshaft)",
+        price: "812.42 $",
       },
       {
         img: "https://shop.autoopora.com/fotos/cache/0741002Z_1-238x238.jpg",
-        text:
-          "Вал распределительный Таврия, 1102, 1103, 1105 Авто (распредвал)",
-        price: "812.42 грн.",
+        text: "Camshaft Tavria, 1102, 1103, 1105 Auto (camshaft)",
+        price: "812.42 $",
       },
     ];
     let block = array.map((data, index) => {
@@ -88,7 +86,7 @@ export default class SliderComponent extends Component {
   render() {
     return (
       <div className={styles.blockSlider}>
-        <h2>Вы просматривали товары</h2>
+        <h2>You looked at goods</h2>
         <StyledCarousel
           className={styles.blockSlider__slider}
           slidesPerPage={4}

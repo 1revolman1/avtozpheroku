@@ -28,7 +28,7 @@ export default class FavouriteProducts extends Component {
         {favourite.length > 0 ? (
           this.renderCard(favourite)
         ) : (
-          <LoadingDiv>Вы не выбрали товары!</LoadingDiv>
+          <LoadingDiv>You have not selected products!</LoadingDiv>
         )}
       </React.Fragment>
     );

@@ -14,6 +14,7 @@ export default class BlockBuy extends Component {
       let price = Number(e.product.price.split(" ")[0]);
       AllPrice += increment * price;
     });
+    if (AllPrice === 0) return 0;
     return AllPrice.toFixed(2);
   };
   componentDidMount = () => {
@@ -27,15 +28,17 @@ export default class BlockBuy extends Component {
   render() {
     return (
       <div className={styles.blockBuy}>
-        <h3>Итого: {this.state.price} грн.</h3>
-        <div
+        <h3>In total: {this.state.price} $</h3>
+        <button
           onClick={() => {
-            if (this.state.price !== 0) alert(this.state.price + " грн.");
+            if (this.state.price !== 0.0) {
+              alert(this.state.price + " $");
+            }
           }}
           className={styles.blockBuy_form}
         >
-          <span>Оформить заказ</span>
-        </div>
+          <span>Checkout</span>
+        </button>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../assets/header/logo.png";
+import logo from "../../assets/header/logoH.svg";
 import userlogo from "../../assets/header/user.svg";
 import phonelogo from "../../assets/header/communications.svg";
 const WrapperInformationContainerDiv = styled.div`
@@ -141,8 +141,8 @@ export default class InformationBlock extends Component {
           <BlockAtMainHeader fl="2" pd="0 0 0 45px">
             <StyleInfromationBlock>
               <p>
-                в будние дни с 08:00 – 19:00, в субботу и воскресенье с 09:00 –
-                16:00
+                on weekdays from 08:00 - 19:00, on Saturday and Sunday from
+                09:00 - 16:00
               </p>
               <StyleInformationUl>
                 {phones.map((phone, index) => (
@@ -153,11 +153,11 @@ export default class InformationBlock extends Component {
                   </li>
                 ))}
               </StyleInformationUl>
-              <a href="tel:+1234567890">перезвоните мне</a>
+              <a href="tel:+1234567890">call me back</a>
             </StyleInfromationBlock>
           </BlockAtMainHeader>
           <BlockAtMainHeader fl="1" jc="flex-end" pd="0 0 0 25px">
-            <StyledLinkAuth to="/auth">Вход/Регистрация</StyledLinkAuth>
+            <StyledLinkAuth to="/auth">Login / Registration</StyledLinkAuth>
           </BlockAtMainHeader>
         </WrapperBlockDiv>
       </WrapperInformationContainerDiv>

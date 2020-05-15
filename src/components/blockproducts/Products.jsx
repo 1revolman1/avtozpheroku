@@ -66,8 +66,11 @@ export default class Products extends Component {
           {!isFetching ? (
             this.renderCard(products, pageToShow - 1)
           ) : (
-            <LoadingDiv>Загружаю товар...</LoadingDiv>
+            <LoadingDiv>Loading goods...</LoadingDiv>
           )}
+          <div></div>
+          <div></div>
+          <div></div>
         </ProductsDiv>
       </React.Fragment>
     );

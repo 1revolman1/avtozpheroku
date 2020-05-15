@@ -101,7 +101,7 @@ export default class CheckoutCard extends React.PureComponent {
               </div>
             </div>
             <p className={styles.productCard_block_priceList_witoutSelector}>
-              {(Number(price.split(" ")[0]) * this.state.count).toFixed(2)} грн.
+              {(Number(price.split(" ")[0]) * this.state.count).toFixed(2)} $
             </p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default class CheckoutCard extends React.PureComponent {
           ) : null}
           {buyerslike ? (
             <div className={styles.productCard_categories_hot}>
-              <span>Хит продаж</span>
+              <span>Buyers Like!</span>
             </div>
           ) : null}
         </div>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import "./dropdown.css";
 import styles from "./Dropdown.module.scss";
 import arrow from "./arrow.svg";
-// blog.logrocket.com/building-a-custom-dropdown-menu-component-for-react-e94f02ced4a1/
 const DropDownDiv = styled.div`
   @media screen and (min-width: 768px) {
     width: ${(props) => (props.wg ? props.wg : "auto")};

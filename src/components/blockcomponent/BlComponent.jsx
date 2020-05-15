@@ -67,10 +67,10 @@ class BlComponent extends Component {
     return (
       <div className={styles.productContainer}>
         <div className={styles.productContainer_header}>
-          <h1>Масло моторное </h1>
+          <h1>Motor oil </h1>
           <div className={styles.productContainer_header_settings}>
             <div className={styles.productContainer_header_settings_info}>
-              <p>Найдено {goods.goodsStore.length} товара в категории</p>
+              <p> Found {goods.goodsStore.length} products in category</p>
             </div>
             <div className={styles.productContainer_header_settings_setting}>
               <SelectOption />

@@ -89,36 +89,37 @@ const StyledSpan = styled.span`
 class BlockWithMenu extends Component {
   constructor() {
     super();
+    //Passing links to dropdown
     this.state = {
       location: [
         {
           id: 0,
-          title: "New York",
+          title: "Engine",
           selected: false,
         },
         {
           id: 1,
-          title: "Dublin",
+          title: "Headlights",
           selected: false,
         },
         {
           id: 2,
-          title: "California",
+          title: "Wheels",
           selected: false,
         },
         {
           id: 3,
-          title: "Istanbul",
+          title: "Transmission",
           selected: false,
         },
         {
           id: 4,
-          title: "Izmir",
+          title: "Car stereo",
           selected: false,
         },
         {
           id: 5,
-          title: "Oslo",
+          title: "Petrol",
           selected: false,
         },
       ],
@@ -128,18 +129,13 @@ class BlockWithMenu extends Component {
     const { favourite, whantToBuy } = this.props.cart;
     return (
       <WrapperBlockDiv wg="80%">
-        <Dropdown
-          abs
-          wg="40%"
-          title="Каталог товаров"
-          list={this.state.location}
-        />
+        <Dropdown abs wg="40%" title="Catalog" list={this.state.location} />
         <SearchBar wg="52%" />
         <StyledButtonsDiv wg="25%">
           <StyledButtonDiv>
             <Link to="/favourite"></Link>
             <img src={star} alt="start infavvourite" />
-            <p>Избранное</p>
+            <p>Favorite</p>
             <StyledSpan show={favourite.length > 0 ? true : false}>
               {favourite.length}
             </StyledSpan>
@@ -147,7 +143,7 @@ class BlockWithMenu extends Component {
           <StyledButtonDiv>
             <Link to="/bought"></Link>
             <img src={cart} alt="shopcart" />
-            <p>Корзина</p>
+            <p>Cart</p>
             <StyledSpan show={whantToBuy.length > 0 ? true : false}>
               {whantToBuy.length}
             </StyledSpan>

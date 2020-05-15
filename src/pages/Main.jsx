@@ -8,12 +8,12 @@ export default function Main() {
     <React.Fragment>
       <NowPage
         pageadress={[
-          { title: "Главная", to: "/main" },
-          { title: "Технические жидкости", to: "/teh-jidkost" },
-          { title: "Масло моторное", to: "/maslo-motor" },
+          { title: "Main", to: "/main" },
+          { title: "Technical fluids", to: "/teh-jidkost" },
+          { title: "Motor oil", to: "/maslo-motor" },
         ]}
       />
-      <BlComponent showFilter />
+      <BlComponent />
       <TextImg />
       <SliderComponent />
     </React.Fragment>

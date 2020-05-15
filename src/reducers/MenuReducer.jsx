@@ -22,7 +22,7 @@ export function menueReducer(state = initialState, action) {
     case GET_MENUES_ERROR:
       return {
         ...state,
-        menues: [{ Ничего: ["Пусто"] }],
+        menues: [{ Nothing: ["Empty"] }],
         isFetching: false,
       };
     case SET_MENUES_SETTINGS:
@@ -33,7 +33,6 @@ export function menueReducer(state = initialState, action) {
           [action.payload[1]]: action.payload[0],
         },
       };
-
     default:
       return state;
   }

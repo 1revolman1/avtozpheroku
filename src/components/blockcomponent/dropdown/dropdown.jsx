@@ -43,8 +43,6 @@ const colourStyles = {
   }),
   menuList: (base, state) => ({
     ...base,
-    // maxHeight: "initial",
-    // overflow: "auto",
   }),
   placeholder: (base, state) => ({
     ...base,
@@ -89,7 +87,6 @@ export default class extends Component {
         options={options}
         hideSelectedOptions={false}
         placeholder={placeholder}
-        // menuIsOpen
         backspaceRemovesValue={false}
         onChange={newOnChange}
         // onChange={(e) => console.log(e)}

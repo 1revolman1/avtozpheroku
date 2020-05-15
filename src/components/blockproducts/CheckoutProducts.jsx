@@ -28,7 +28,7 @@ export default class CheckoutProducts extends Component {
         {whantToBuy.length > 0 ? (
           this.renderCard(whantToBuy)
         ) : (
-          <LoadingDiv>Вы не выбрали товары!</LoadingDiv>
+          <LoadingDiv>You have not selected products!</LoadingDiv>
         )}
         <div></div>
       </React.Fragment>

@@ -108,7 +108,7 @@ export default class Card extends React.PureComponent {
               }}
               className={styles.productCard_priceList_buttons_toCart}
             >
-              <p>В корзину</p>
+              <p>In cart</p>
               <img alt="cart" src={cart} />
             </div>
           </div>
@@ -136,7 +136,7 @@ export default class Card extends React.PureComponent {
           ) : null}
           {buyerslike ? (
             <div className={styles.productCard_categories_hot}>
-              <span>Хит продаж</span>
+              <span>Buyers Like!</span>
             </div>
           ) : null}
         </div>
